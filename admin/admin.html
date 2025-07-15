@@ -2,49 +2,67 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Panel</title>
+  <title>Panel Admin - Contenidx</title>
+  <link rel="stylesheet" href="../style.css" />
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    table { width: 100%; border-collapse: collapse; }
-    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+    #login-form, #panel {
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
   </style>
 </head>
 <body>
-  <h1>📊 Panel de Leads Recibidos</h1>
-  <table id="tabla-leads">
-    <thead>
-      <tr>
-        <th>Fecha</th>
-        <th>Correo</th>
-        <th>Tipo</th>
-        <th>Clasificación</th>
-        <th>Detalles</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
 
-  <script>
-    fetch('http://localhost:3000/api/leads')
-      .then(res => res.json())
-      .then(data => {
-        const tbody = document.getElementById("tabla-leads").querySelector("tbody");
-        data.forEach(lead => {
-          const tr = document.createElement("tr");
-          tr.innerHTML = `
-            <td>${new Date(lead.fecha).toLocaleDateString()}</td>
-            <td>${lead.correo}</td>
-            <td>${lead.tipoServicio}</td>
-            <td>${lead.clasificacionLead}</td>
-            <td><button onclick='verDetalles(${JSON.stringify(lead)})'>Ver</button></td>
-          `;
-          tbody.appendChild(tr);
-        });
-      });
+  <div id="login-form">
+    <h2>🔐 Acceso al Panel Admin</h2>
+    <input type="password" id="password" placeholder="Contraseña"><br/><br/>
+    <button onclick="checkPassword()">Ingresar</button>
+  </div>
 
-    function verDetalles(lead) {
-      alert(JSON.stringify(lead, null, 2));
-    }
-  </script>
+  <div id="panel" style="display:none;">
+    <h1>📊 Panel de Leads Recibidos</h1>
+    <p><strong>Total de leads:</strong> <span id="total">0</span></p>
+
+    <table id="tabla-leads">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Nombre</th>
+          <th>Tipo</th>
+          <th>Correo</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script src="/admin/admin.js"></script>
 </body>
 </html>

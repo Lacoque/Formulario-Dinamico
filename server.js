@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(express.static('publico'));
 
 // Mi conexión a MongoDB Atlas
-const MONGO_URI = 'mongodb+srv://contenidx:iw9jWKh0SCDe7xFp@cluster0.pa4sjxs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const MONGO_URI = process.env.MONGO_URI; 
 
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Panel</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+  </style>
+</head>
+<body>
+  <h1>📊 Panel de Leads Recibidos</h1>
+  <table id="tabla-leads">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Correo</th>
+        <th>Tipo</th>
+        <th>Clasificación</th>
+        <th>Detalles</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    fetch('http://localhost:3000/api/leads')
+      .then(res => res.json())
+      .then(data => {
+        const tbody = document.getElementById("tabla-leads").querySelector("tbody");
+        data.forEach(lead => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td>${new Date(lead.fecha).toLocaleDateString()}</td>
+            <td>${lead.correo}</td>
+            <td>${lead.tipoServicio}</td>
+            <td>${lead.clasificacionLead}</td>
+            <td><button onclick='verDetalles(${JSON.stringify(lead)})'>Ver</button></td>
+          `;
+          tbody.appendChild(tr);
+        });
+      });
+
+    function verDetalles(lead) {
+      alert(JSON.stringify(lead, null, 2));
+    }
+  </script>
+</body>
+</html>

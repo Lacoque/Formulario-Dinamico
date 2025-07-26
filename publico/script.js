@@ -211,66 +211,76 @@ async function descargarPDF() {
 
   doc.save("formulario_contenidx.pdf");
 }
-
-
 async function enviarDatos() {
-  const data = {
-    nombreEmpresa: document.getElementById("nombreEmpresa").value,
-    correo: document.getElementById("correo").value,
-    tipoServicio: document.getElementById("tipoServicio").value,
-    objetivo: document.getElementById("objetivo").value,
-    funcionalidades: document.getElementById("funcionalidades").value,
-    tieneDiseno: document.getElementById("tieneDiseno").value,
-    referenciasDiseno: document.getElementById("referenciasDiseno").value,
-    manualMarca: document.getElementById("manualMarca").value,
-    ayudaMediosPago: document.getElementById("ayudaMediosPago")?.value || "",
-    problemasTecnicos: document.getElementById("problemasTecnicos").value,
-    accesosMateriales: document.getElementById("accesosMateriales").value,
-    tieneSitio: document.getElementById("tieneSitio").value,
-    linkSitio: document.getElementById("linkSitio").value,
-    accesoHosting: document.getElementById("accesoHosting").value,
-    infoProductos: document.getElementById("infoProductos").value,
-    linkProductos: document.getElementById("linkProductos").value,
-    correoVentas: document.getElementById("correoVentas").value,
-    mediosPago: document.getElementById("mediosPago").value,
-    sistemaFacturacion: document.getElementById("sistemaFacturacion").value,
-    infoComprador: document.getElementById("infoComprador")?.value || "",
-    extrasTienda: document.getElementById("extrasTienda")?.value || "",
-    ayudaExtra: document.getElementById("ayudaExtra")?.value || ""
-  };
   const nombreEmpresa = document.getElementById("nombreEmpresa").value.trim();
-const correo = document.getElementById("correo").value.trim();
-const tipoServicio = document.getElementById("tipoServicio").value.trim();
+  const correo = document.getElementById("correo").value.trim();
+  const tipoServicio = document.getElementById("tipoServicio").value.trim();
 
-if (!nombreEmpresa) {
-  alert("⚠️ Por favor, ingresa el nombre del proyecto o empresa.");
-  return;
+  if (!nombreEmpresa) {
+    alert("⚠️ Por favor, ingresa el nombre del proyecto o empresa.");
+    return;
+  }
+
+  if (!correo) {
+    alert("⚠️ El correo electrónico es obligatorio.");
+    return;
+  }
+
+  if (!isValidEmail(correo)) {
+    alert("⚠️ Por favor, ingresa un correo electrónico válido.");
+    return;
+  }
+
+  if (!tipoServicio) {
+    alert("⚠️ Por favor, selecciona un tipo de servicio.");
+    return;
+  }
+
+  const data = {
+    nombreEmpresa,
+    correo,
+    tipoServicio,
+    objetivo: document.getElementById("objetivo")?.value.trim() || "",
+    funcionalidades: document.getElementById("funcionalidades")?.value.trim() || "",
+    tieneDiseno: document.getElementById("tieneDiseno")?.value.trim() || "",
+    referenciasDiseno: document.getElementById("referenciasDiseno")?.value.trim() || "",
+    manualMarca: document.getElementById("manualMarca")?.value.trim() || "",
+    ayudaMediosPago: document.getElementById("ayudaMediosPago")?.value.trim() || "",
+    problemasTecnicos: document.getElementById("problemasTecnicos")?.value.trim() || "",
+    accesosMateriales: document.getElementById("accesosMateriales")?.value.trim() || "",
+    tieneSitio: document.getElementById("tieneSitio")?.value.trim() || "",
+    linkSitio: document.getElementById("linkSitio")?.value.trim() || "",
+    accesoHosting: document.getElementById("accesoHosting")?.value.trim() || "",
+    infoProductos: document.getElementById("infoProductos")?.value.trim() || "",
+    linkProductos: document.getElementById("linkProductos")?.value.trim() || "",
+    correoVentas: document.getElementById("correoVentas")?.value.trim() || "",
+    mediosPago: document.getElementById("mediosPago")?.value.trim() || "",
+    sistemaFacturacion: document.getElementById("sistemaFacturacion")?.value.trim() || "",
+    infoComprador: document.getElementById("infoComprador")?.value.trim() || "",
+    extrasTienda: document.getElementById("extrasTienda")?.value.trim() || "",
+    ayudaExtra: document.getElementById("ayudaExtra")?.value.trim() || ""
+  };
+
+  try {
+    const response = await fetch("https://formulario-dinamico.onrender.com/api/formulario", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+      alert("✅ ¡Gracias! Tu información ha sido enviada.");
+    } else {
+      alert("❌ Hubo un error al enviar tu formulario.");
+    }
+  } catch (error) {
+    console.error("❌ Error de conexión:", error);
+    alert("❌ No se pudo conectar con el servidor.");
+  }
 }
-
-if (!correo) {
-  alert("⚠️ El correo electrónico es obligatorio.");
-  return;
-}
-
-if (!isValidEmail(correo)) {
-  alert("⚠️ Por favor, ingresa un correo electrónico válido.");
-  return;
-}
-
-if (!tipoServicio) {
-  alert("⚠️ Por favor, selecciona un tipo de servicio.");
-  return;
-}
-  const response = await fetch("/api/formulario", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
-  });
-
   if (response.ok) {
     alert("✅ ¡Gracias! Tu información ha sido enviada.");
   } else {
     alert("❌ Hubo un error al enviar tu formulario.");
   }
-}
   

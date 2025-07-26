@@ -238,25 +238,29 @@ async function enviarDatos() {
     extrasTienda: document.getElementById("extrasTienda")?.value || "",
     ayudaExtra: document.getElementById("ayudaExtra")?.value || ""
   };
-  if (!nombreEmpresa) {
-    alert("⚠️ Por favor, ingresa el nombre del proyecto o empresa.");
-    return;
-  }
+  const nombreEmpresa = document.getElementById("nombreEmpresa").value.trim();
+const correo = document.getElementById("correo").value.trim();
+const tipoServicio = document.getElementById("tipoServicio").value.trim();
 
-  if (!correo) {
-    alert("⚠️ El correo electrónico es obligatorio.");
-    return;
-  }
+if (!nombreEmpresa) {
+  alert("⚠️ Por favor, ingresa el nombre del proyecto o empresa.");
+  return;
+}
 
-  if (!isValidEmail(correo)) {
-    alert("⚠️ Por favor, ingresa un correo electrónico válido.");
-    return;
-  }
+if (!correo) {
+  alert("⚠️ El correo electrónico es obligatorio.");
+  return;
+}
 
-  if (!tipoServicio) {
-    alert("⚠️ Por favor, selecciona un tipo de servicio.");
-    return;
-  }
+if (!isValidEmail(correo)) {
+  alert("⚠️ Por favor, ingresa un correo electrónico válido.");
+  return;
+}
+
+if (!tipoServicio) {
+  alert("⚠️ Por favor, selecciona un tipo de servicio.");
+  return;
+}
   const response = await fetch("/api/formulario", {
     method: "POST",
     headers: { "Content-Type": "application/json" },

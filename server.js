@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware: conecta o comunica una capa con la otra 
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(express.static('publico'));
 
 // Mi conexión a MongoDB Atlas
@@ -76,7 +76,7 @@ const RespuestaSchema = new mongoose.Schema({
     type: String,
     enum: ['caliente', 'tibio', 'frío'],
     default: function () {
-      if (this.tipoServicio === 'desarrollo, seo' && this.tieneSitio === 'si') return 'caliente';
+     if ((this.tipoServicio === 'desarrollo' || this.tipoServicio === 'seo') && this.tieneSitio === 'si') return 'caliente';
       else if (this.tipoServicio === 'rediseño') return 'tibio';
       else return 'frío';
     }

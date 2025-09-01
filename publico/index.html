@@ -4,8 +4,18 @@
   <meta charset="UTF-8" />
   <title>Asistencia virtual</title>
   <link rel="stylesheet" href="/style.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  
+  <!-- cloudflare -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js "></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js "></script>
+  
+  <!-- Shoelace -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
 </head>
 <body>
   <div class="container">
@@ -120,6 +130,55 @@
     <button type="button" onclick="descargarPDF()">¡Descargar tu resumen!</button>
   </div>
 
+
+
+  <div class="container">
+    <div>
+      <h2>Empecemos!</h2>
+      <p>Hola! A continuación, contanos qué necesitás y completá la info clave sobre el proyecto.
+        <br>
+        Esta información nos va a ayudar a organizar el trabajo y avanzar de forma clara, ordenada y en equipo
+      </p>
+    </div>
+    <form class="input-validation-required">
+      <sl-input name="name" placeholder="Nombre" aria-placeholder="Nombre" type="text" id="nombreEmpresa" required><sl-icon slot="prefix" name="file-person"></sl-icon></sl-input>
+      <br />
+      <sl-input name="email" placeholder="Correo electrónico" aria-placeholder="Correo electrónico" type="email" required><sl-icon slot="prefix" name="envelope"></sl-icon></sl-input>
+      <br />
+      <sl-select placeholder="Te ayudamos con..." aria-placeholder="Tipo de servicio" clearable required>
+        <sl-icon slot="prefix" name="rocket-takeoff"></sl-icon>
+        <sl-option value="desarrollo">Crear una página web desde cero</sl-option>
+        <sl-option value="rediseño">Rediseñar un sitio web que ya tenés</sl-option>
+        <sl-option value="seo"> Mejorar el SEO técnico (para aparecer mejor en Google)</sl-option>
+        <sl-option value="funcionalidades">Agregar o corregir funcionalidades específicas (formularios, carrito, login, etc.)</sl-option>
+      </sl-select>
+      <br />
+      <sl-button type="submit" variant="primary" onclick="enviarDatos()">Enviar</sl-button>
+    </form>
+
+    <script type="module">
+      const form = document.querySelector('.input-validation-required');
+
+      // Wait for controls to be defined before attaching form listeners
+      await Promise.all([
+        customElements.whenDefined('sl-button'),
+        customElements.whenDefined('sl-checkbox'),
+        customElements.whenDefined('sl-input'),
+        customElements.whenDefined('sl-option'),
+        customElements.whenDefined('sl-select'),
+        customElements.whenDefined('sl-textarea')
+      ]).then(() => {
+        form.addEventListener('submit', event => {
+          event.preventDefault();
+          alert('All fields are valid!');
+        });
+      });
+    </script>
+
+
+
+
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"></script>
   <script src="/script.js"></script>
 </body>
 </html> 

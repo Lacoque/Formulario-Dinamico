@@ -1,27 +1,98 @@
-document.getElementById("tipoServicio").addEventListener("change", function () {
-  const tipo = this.value;
+// document.getElementById("tipoServicio").addEventListener("sl-change", function (event) {
+//   const tipo = event.target.value;
 
-  document.getElementById("seccion-desarrollo-rediseño").style.display = "none";
-  document.getElementById("seccion-rediseño-seo").style.display = "none";
-  document.getElementById("seccion-productos-dominio").style.display = "none";
-  document.getElementById("seccion-tienda").style.display = "none";
+//const { set } = require("mongoose");
 
-  if (tipo === "desarrollo" || tipo === "rediseño") {
-    document.getElementById("seccion-desarrollo-rediseño").style.display = "block";
-    document.getElementById("seccion-tienda").style.display = "block";
-    document.getElementById("seccion-productos-dominio").style.display = "block";
-  }
+//   document.getElementById("seccion-desarrollo-rediseño").style.display = "none";
+//   document.getElementById("seccion-rediseño-seo").style.display = "none";
+//   document.getElementById("seccion-productos-dominio").style.display = "none";
+//   document.getElementById("seccion-tienda").style.display = "none";
+//   document.getElementById("funcionalidades").style.display = "none";
 
-  if (tipo === "rediseño" || tipo === "seo") {
-    document.getElementById("seccion-rediseño-seo").style.display = "block";
-  }
+//   if (tipo === "desarrollo" || tipo === "rediseño") {
+//     document.getElementById("seccion-desarrollo-rediseño").style.display = "block";
+//     document.getElementById("seccion-tienda").style.display = "block";
+//     document.getElementById("seccion-productos-dominio").style.display = "block";
+//   }
 
-  if (tipo === "funcionalidades") {
-    document.getElementById("seccion-productos-dominio").style.display = "block";
-    document.getElementById("seccion-tienda").style.display = "block";
-    document.getElementById("seccion-funcionalidades").style.display = "block";
+//   if (tipo === "rediseño" || tipo === "seo") {
+//     document.getElementById("seccion-rediseño-seo").style.display = "block";
+//   }
+
+//   if (tipo === "funcionalidades") {
+//     document.getElementById("seccion-productos-dominio").style.display = "block";
+//     document.getElementById("seccion-tienda").style.display = "block";
+//     document.getElementById("seccion-funcionalidades").style.display = "block";
+//   }
+// });
+
+
+
+
+
+document.querySelectorAll(".card-opcion").forEach(card => {
+  card.addEventListener("click", function () {
+    const tipo = card.dataset.tipo;
+
+    // Ocultar todas las secciones
+    document.getElementById("seccion-desarrollo-rediseño").style.display = "none";
+    document.getElementById("seccion-rediseño-seo").style.display = "none";
+    document.getElementById("seccion-productos-dominio").style.display = "none";
+    document.getElementById("seccion-tienda").style.display = "none";
+    document.getElementById("seccion-funcionalidades").style.display = "none";
+
+    // Mostrar según tipo
+    if (tipo === "desarrollo" || tipo === "rediseño") {
+      document.getElementById("seccion-desarrollo-rediseño").style.display = "block";
+      document.getElementById("seccion-tienda").style.display = "block";
+      document.getElementById("seccion-productos-dominio").style.display = "block";
+    }
+
+    if (tipo === "rediseño" || tipo === "seo") {
+      document.getElementById("seccion-rediseño-seo").style.display = "block";
+    }
+
+    if (tipo === "funcionalidades") {
+      document.getElementById("seccion-productos-dominio").style.display = "block";
+      document.getElementById("seccion-tienda").style.display = "block";
+      document.getElementById("seccion-funcionalidades").style.display = "block";
+    }
+    
+
+    // card.addEventListener("click", function () {
+    //   if(tipo === "desarrollo" || tipo === "rediseño") {
+    //     setTimeout(function () {
+    //       document.getElementById("seccion-desarrollo-rediseño").scrollIntoView({ behavior: "smooth" });
+    //     }, 1000);
+    //   };
+    // });
+
+
+
+  });
+});
+
+const observer = new MutationObserver((mutationsList) => {
+  for (const mutation of mutationsList) {
+    if (mutation.type === "attributes" && mutation.target.classList.contains("selected")) {
+      mutation.target.scrollIntoView({ behavior: "smooth" });
+    }
   }
 });
+
+document.querySelectorAll(".card-opcion").forEach(card => {
+  observer.observe(card, { attributes: true });
+});
+
+
+
+
+
+
+
+
+
+
 
 
 document.getElementById("tieneDiseno").addEventListener("change", function () {

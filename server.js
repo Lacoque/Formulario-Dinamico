@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -13,7 +14,7 @@ app.use(express.json());
 app.use(express.static('publico'));
 
 // Mi conexión a MongoDB Atlas
-const MONGO_URI = process.env.MONGO_URI; 
+const MONGO_URI = process.env.MONGO_URI;
 
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,

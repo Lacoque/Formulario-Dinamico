@@ -2,9 +2,14 @@
   visibility: hidden;
 }
 
+:root {
+  --cx-blanco-gris: #F2F2F2;
+}
+
 body {
     font-family: 'Rubik', sans-serif;
     background-color: #f7f7f7;
+    background: url('assets/img/fondo-form-dinamico.png') no-repeat center center fixed;
     transition: visibility 0.3s ease-in-out;
 }
 
@@ -16,9 +21,9 @@ body::-webkit-input-placeholder {
   max-width: 500px;
   margin: 50px auto;
   padding: 20px;
-  background: white;
+  background: var(--cx-blanco-gris);
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
 
 button {
@@ -32,4 +37,13 @@ button {
 
 button:hover {
   background-color: #8f00b3;
+}
+
+sl-card {
+  cursor: pointer;
+  max-width: 300px;
+  transition: transform 0.3s ease;
+}
+sl-card:hover {
+  transform: scale(1.05);
 }

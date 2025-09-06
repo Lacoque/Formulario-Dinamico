@@ -21,30 +21,29 @@
 
   <div class="container">
     <div>
+      <sl-badge variant="neutral">Requerimientos de proyecto</sl-badge>
       <h2>Empecemos!</h2>
-      <p>Hola! A continuación, contanos qué necesitás y completá la info clave sobre el proyecto.
+      <p>
+        <span>
+          ¡Bienvenidx al inicio de tu proyecto con <a href="http://contenidx.com.ar" target="_blank" rel="noopener noreferrer">Contenidx</a>!
+        </span>
         <br>
-        Esta información nos va a ayudar a organizar el trabajo y avanzar de forma clara, ordenada y en equipo
+        Este formulario nos permite conocer los aspectos clave de lo que necesitas, para diseñar una solución precisa y alineada con tus objetivos.
+        <br>
+        Tu tiempo vale, y queremos aprovecharlo al máximo.  
+        Completá los campos con tranquilidad: estamos para ayudarte a avanzar con foco, estrategia y creatividad.
       </p>
+      <sl-button class="btn-enviar" type="submit" variant="primary" onclick="enviarDatos()">Enviar</sl-button>
     </div>
     <form class="input-validation-required">
-      <sl-input name="name" placeholder="Nombre" aria-placeholder="Nombre" type="text" id="nombreEmpresa" required><sl-icon slot="prefix" name="file-person"></sl-icon></sl-input>
-      <br />
-      <sl-input name="email" placeholder="Correo electrónico" aria-placeholder="Correo electrónico" type="email" required><sl-icon slot="prefix" name="envelope"></sl-icon></sl-input>
-      <br />
-      <!-- <sl-select id="tipoServicio" placeholder="Te ayudamos con..." aria-placeholder="Tipo de servicio" clearable required>
-        <sl-icon slot="prefix" name="rocket-takeoff"></sl-icon>
-        <sl-option value="desarrollo">Crear una página web desde cero</sl-option>
-        <sl-option value="rediseño">Rediseñar un sitio web que ya tenés</sl-option>
-        <sl-option value="seo"> Mejorar el SEO técnico (para aparecer mejor en Google)</sl-option>
-        <sl-option value="funcionalidades">Agregar o corregir funcionalidades específicas (formularios, carrito, login, etc.)</sl-option>
-      </sl-select>
-      <br />
-      <sl-button type="submit" variant="primary" onclick="enviarDatos()">Enviar</sl-button> -->
-
+      <div class="field-form">
+        <sl-input name="name" placeholder="Nombre" aria-placeholder="Nombre" type="text" id="nombreEmpresa" required><sl-icon slot="prefix" name="file-person"></sl-icon></sl-input>
+        <sl-input name="email" placeholder="Correo electrónico" aria-placeholder="Correo electrónico" type="email" required><sl-icon slot="prefix" name="envelope"></sl-icon></sl-input>
+      </div>
       <div class="card-grid">
         <sl-card class="card-opcion" data-tipo="desarrollo">
-          <strong slot="header">Desarrollo</strong>
+          <sl-badge variant="neutral">Más completo</sl-badge>
+          <h3>Desarrollo</h3>
           <p>Nuevo sitio desde cero, con funcionalidades personalizadas.</p>
         </sl-card>
 
@@ -180,9 +179,6 @@
 
 
   </div>
-
-
-
 
 
 

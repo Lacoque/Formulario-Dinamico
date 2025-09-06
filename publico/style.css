@@ -1,13 +1,19 @@
+/* Estilos globales */
 :not(:defined) {
   visibility: hidden;
 }
 
 :root {
-  --cx-blanco-gris: #F2F2F2;
+  --blanco-gris: #F2F2F2;
+  --tuquesa: #1172A8;
+  --rojo: #C11718;
+  --negro: #2D2D2D;
+  --negro-texto: #444444;
+  --degr-turquesa-oscuro: linear-gradient(90deg, #1584C2 0%, #0A3F5C 100%);
 }
 
 body {
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Rubik', sans-serif !important;
     background-color: #f7f7f7;
     background: url('assets/img/fondo-form-dinamico.png') no-repeat center center fixed;
     transition: visibility 0.3s ease-in-out;
@@ -17,27 +23,56 @@ body::-webkit-input-placeholder {
     font-family: 'Rubik', sans-serif;
 }
 
+p {
+  font-size: 1rem;
+  color: var(--negro-texto);
+  line-height: 1.45;
+}
+
+/* Estilos personalizados para Shoelace */
+
+.btn-enviar::part(base) {
+  font-family: 'Rubik', sans-serif !important;
+  font-weight: 200;
+  color: var(--blanco-gris);
+  background: var(--degr-turquesa-oscuro);
+  transition: all .3s;
+}
+.btn-enviar::part(base):hover {
+  background: var(--negro);
+  color: var(--blanco-gris);
+  border: 1px solid var(--tuquesa);
+}
+
+
+
+/* Estilos particulares */
 .container {
-  max-width: 500px;
+  display: flex;
+  gap: 2rem;
+  max-width: 80%;
   margin: 50px auto;
   padding: 20px;
-  background: var(--cx-blanco-gris);
+  background: var(--blanco-gris);
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
 
-button {
-  padding: 10px 20px;
-  background-color: #9000ff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+
+
+
+
+
+/* Formulario  */
+
+form {
+  padding: 1rem;
+  max-width: 80%;
 }
 
-button:hover {
-  background-color: #8f00b3;
-}
+
+
+/* Tarjetas */
 
 sl-card {
   cursor: pointer;
@@ -46,4 +81,24 @@ sl-card {
 }
 sl-card:hover {
   transform: scale(1.05);
+}
+
+.card {
+  min-width: 400px;
+  height: max-content;
+}
+
+.card-grid {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.field-form {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  overflow: hidden;
 }

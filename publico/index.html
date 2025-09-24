@@ -33,150 +33,149 @@
         Tu tiempo vale, y queremos aprovecharlo al máximo.  
         Completá los campos con tranquilidad: estamos para ayudarte a avanzar con foco, estrategia y creatividad.
       </p>
-      <sl-button class="btn-enviar" type="submit" variant="primary" onclick="enviarDatos()">Enviar</sl-button>
     </div>
+
+
     <form class="input-validation-required">
+      
       <div class="field-form">
         <sl-input name="name" placeholder="Nombre" aria-placeholder="Nombre" type="text" id="nombreEmpresa" required><sl-icon slot="prefix" name="file-person"></sl-icon></sl-input>
         <sl-input name="email" placeholder="Correo electrónico" aria-placeholder="Correo electrónico" type="email" required><sl-icon slot="prefix" name="envelope"></sl-icon></sl-input>
       </div>
-      <div class="card-grid">
-        <sl-card class="card-opcion" data-tipo="desarrollo">
-          <sl-badge variant="neutral">Más completo</sl-badge>
-          <h3>Desarrollo</h3>
-          <p>Nuevo sitio desde cero, con funcionalidades personalizadas.</p>
-        </sl-card>
 
-        <sl-card class="card-opcion" data-tipo="rediseño">
-          <strong slot="header">Rediseño</strong>
-          <p>Actualización visual y técnica de tu sitio actual.</p>
-        </sl-card>
+      <div class="form-field">
 
-        <sl-card class="card-opcion" data-tipo="seo">
-          <strong slot="header">SEO</strong>
-          <p>Optimización para buscadores y posicionamiento orgánico.</p>
-        </sl-card>
+        <div class="card-grid">
+          <sl-card class="card-opcion" data-tipo="desarrollo">
+            <sl-badge variant="neutral">Más completo</sl-badge>
+            <h3>Desarrollo</h3>
+            <p>Nuevo sitio desde cero, con funcionalidades personalizadas.</p>
+          </sl-card>
 
-        <sl-card class="card-opcion" data-tipo="funcionalidades">
-          <strong slot="header">Funcionalidades</strong>
-          <p>Integraciones, automatizaciones y mejoras específicas.</p>
-        </sl-card>
-      </div>
+          <sl-card class="card-opcion" data-tipo="rediseño">
+            <strong slot="header">Rediseño</strong>
+            <p>Actualización visual y técnica de tu sitio actual.</p>
+          </sl-card>
 
+          <sl-card class="card-opcion" data-tipo="seo">
+            <strong slot="header">SEO</strong>
+            <p>Optimización para buscadores y posicionamiento orgánico.</p>
+          </sl-card>
 
-
-      <!-- Sección Desarrollo / Rediseño -->
-      <div id="seccion-desarrollo-rediseño" style="display:none;">
-        <h3>Información sobre tu proyecto</h3>
-        <label>¿Cuál es el objetivo principal de tu sitio web? Por ejemplo: vender productos, recibir consultas, mostrar tu trabajo, agendar turnos, informar sobre tu emprendimiento, etc.</label><br/>
-        <textarea id="objetivo"></textarea><br/><br/>
-        <label>¿Qué secciones o funciones te gustaría que tenga tu sitio? Ejemplos: blog, formulario de contacto, tienda online (para productos físicos o digitales), área de usuarios, agenda de turnos, etc.</label><br/>
-        <textarea id="funcionalidades"></textarea><br/><br/>
-        <label>¿Ya tenés un diseño pensado para tu sitio? (Puede ser un boceto en Figma, Canva, PDF, o cualquier otra herramienta. Si no tenés, ¡no hay problema!)</label><br/>
-        <select id="tieneDiseno">
-          <option value="">Selecciona...</option>
-          <option value="si">Sí</option>
-          <option value="no">No</option>
-        </select><br/><br/>
-        <div id="diseno-no" style="display:none;">
-          <label>¿Hay páginas web, diseños o estilos que te gusten y sirvan de inspiración? Esto nos ayuda a entender mejor tu gusto y estilo. ¡Podés compartir links, imágenes o descripciones!</label><br/>
-          <textarea id="referenciasDiseno"></textarea><br/><br/>
-          <label>¿Contás con un manual de marca o algún material gráfico que debamos respetar? Ej: logo, paleta de colores, tipografías, etc.</label><br/>
-          <input type="text" id="manualMarca"/><br/><br/>
+          <sl-card class="card-opcion" data-tipo="funcionalidades">
+            <strong slot="header">Funcionalidades</strong>
+            <p>Integraciones, automatizaciones y mejoras específicas.</p>
+          </sl-card>
         </div>
+
+
+
+        <!-- Sección Desarrollo / Rediseño -->
+        <div id="seccion-desarrollo-rediseño" style="display:none;">
+          <h3>Información sobre tu proyecto</h3>
+          <label>¿Cuál es el objetivo principal de tu sitio web? Por ejemplo: vender productos, recibir consultas, mostrar tu trabajo, agendar turnos, informar sobre tu emprendimiento, etc.</label><br/>
+          <textarea id="objetivo"></textarea><br/><br/>
+          <label>¿Qué secciones o funciones te gustaría que tenga tu sitio? Ejemplos: blog, formulario de contacto, tienda online (para productos físicos o digitales), área de usuarios, agenda de turnos, etc.</label><br/>
+          <textarea id="funcionalidades"></textarea><br/><br/>
+          <label>¿Ya tenés un diseño pensado para tu sitio? (Puede ser un boceto en Figma, Canva, PDF, o cualquier otra herramienta. Si no tenés, ¡no hay problema!)</label><br/>
+          <select id="tieneDiseno">
+            <option value="">Selecciona...</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select><br/><br/>
+          <div id="diseno-no" style="display:none;">
+            <label>¿Hay páginas web, diseños o estilos que te gusten y sirvan de inspiración? Esto nos ayuda a entender mejor tu gusto y estilo. ¡Podés compartir links, imágenes o descripciones!</label><br/>
+            <textarea id="referenciasDiseno"></textarea><br/><br/>
+            <label>¿Contás con un manual de marca o algún material gráfico que debamos respetar? Ej: logo, paleta de colores, tipografías, etc.</label><br/>
+            <input type="text" id="manualMarca"/><br/><br/>
+          </div>
+        </div>
+
+        <div id="seccion-rediseño-seo" style="display:none;">
+          <h3>Rastreo y Accesibilidad en Goolge</h3>
+          <label>¿Querés que tu sitio aparezca en Google y sea más fácil de encontrar por tus clientes?(Trabajamos con herramientas de rastreo y optimización para mejorar la visibilidad de tu web)      </label><br/>
+          <textarea id="problemasTecnicos"></textarea><br/><br/>
+          <label> ¿Tu sitio presenta errores técnicos o problemas de funcionamiento?(Ej: carga lenta, enlaces rotos, errores de visualización, etc.)</label><br/>
+          <textarea id="problemasTecnicos"></textarea><br/><br/>
+          <label>¿Contás con los accesos o materiales que podríamos necesitar?</label><br/>
+          <input type="text" id="accesosMateriales"/><br/><br/>
+        </div>
+
+        <div id="seccion-funcionalidades" style="display:none;">
+          <label>¿Querés que te ayudemos a agregar un mail corporativo o a corregir un formulario en tu sitio web?
+            Por ejemplo: crear un correo tipo contacto@tumarca.com, agregar un nuevo formulario de contacto o corregir uno que no está funcionando correctamente.</label><br/>
+          <textarea id="problemasTecnicos"></textarea><br/><br/>
+          <label>¿Qué secciones o funciones nuevas te gustaría agregar a tu sitio actual?</label><br/>
+          <textarea id="funcionalidades"></textarea><br/><br/>
+        </div>
+
+
+
+
+
+
+        <div id="seccion-funcionalidades" style="display:none;">
+          <label>¿Querés que te ayudemos a agregar un mail corporativo o a corregir un formulario en tu sitio web?
+            Por ejemplo: crear un correo tipo contacto@tumarca.com, agregar un nuevo formulario de contacto o corregir uno que no está funcionando correctamente.</label><br/>
+          <textarea id="problemasTecnicos"></textarea><br/><br/>
+          <label>¿Qué secciones o funciones nuevas te gustaría agregar a tu sitio actual?</label><br/>
+          <textarea id="funcionalidades"></textarea><br/><br/>
+        </div>
+
+        <div id="seccion-tienda" style="display:none;">
+          <h3>Si tu sitio es una tienda online...</h3>
+          <label>¿Vas a vender productos físicos o digitales?
+            (Por ejemplo: ropa, cursos, descargas, obras, etc.)</label><br/>
+          <textarea id="infoProductos"></textarea><br/><br/>
+          <label>¿A qué correo querés que lleguen las notificaciones de compra?
+            (Es el mail donde vas a recibir los avisos cuando alguien te compre algo)</label><br/>
+          <input type="email" id="correoVentas"/><br/><br/>
+          <label>¿Qué medios de pago querés ofrecer en tu tienda?
+            Ej: Mercado Pago, Transferencia bancaria, Efectivo, PayPal, etc.</label><br/>
+          <textarea id="mediosPago"></textarea><br/><br/>
+          <label>¿Usás algún sistema de facturación?
+            (Por ejemplo: Facturante, Factura A desde AFIP, TiendaNube, otro sistema o aún no)</label><br/>
+          <input type="text" id="sistemaFacturacion"/><br/><br/>
+          <label>¿Tenés la información de tus productos lista para cargar?
+            Podés compartirnos un archivo o carpeta con:
+            
+            Título del producto;
+            
+            Descripción completa;
+            
+            Precio;
+            
+            Peso y dimensiones de la caja de envío (si aplica);
+            
+            Imágenes</label><br/>
+          <input type="url" id="linkProductos"/><br/><br/>
+        </div>
+
+
+        <div id="seccion-productos-dominio" style="display:none;">
+          <h3>Datos del sitio actual</h3>
+          <label> ¿Ya tenés una web publicada o un dominio comprado?</label><br/>
+          <select id="tieneSitio">
+            <option value="">Selecciona...</option>
+            <option value="si">Sí</option>
+            <option value="no">No</option>
+          </select><br/><br/>
+          <div id="sitio-link" style="display:none;">
+            <label>Link del sitio:</label><br/>
+            <input type="url" id="linkSitio"/><br/><br/>
+          </div>
+          <label>¿Tenés acceso al panel de tu hosting o plataforma web actual?
+            Por favor compartí el usuario y contraseña del servicio que uses (WordPress, cPanel, DonWeb, Joomla, etc.)</label><br/>
+          <input type="text" id="accesoHosting"/><br/><br/>
+        </div>
+
       </div>
-
-      <div id="seccion-rediseño-seo" style="display:none;">
-        <h3>Rastreo y Accesibilidad en Goolge</h3>
-        <label>¿Querés que tu sitio aparezca en Google y sea más fácil de encontrar por tus clientes?(Trabajamos con herramientas de rastreo y optimización para mejorar la visibilidad de tu web)      </label><br/>
-        <textarea id="problemasTecnicos"></textarea><br/><br/>
-        <label> ¿Tu sitio presenta errores técnicos o problemas de funcionamiento?(Ej: carga lenta, enlaces rotos, errores de visualización, etc.)</label><br/>
-        <textarea id="problemasTecnicos"></textarea><br/><br/>
-        <label>¿Contás con los accesos o materiales que podríamos necesitar?</label><br/>
-        <input type="text" id="accesosMateriales"/><br/><br/>
-      </div>
-
-      <div id="seccion-funcionalidades" style="display:none;">
-        <label>¿Querés que te ayudemos a agregar un mail corporativo o a corregir un formulario en tu sitio web?
-          Por ejemplo: crear un correo tipo contacto@tumarca.com, agregar un nuevo formulario de contacto o corregir uno que no está funcionando correctamente.</label><br/>
-        <textarea id="problemasTecnicos"></textarea><br/><br/>
-        <label>¿Qué secciones o funciones nuevas te gustaría agregar a tu sitio actual?</label><br/>
-        <textarea id="funcionalidades"></textarea><br/><br/>
-      </div>
-
-
-
-
-
-
-      <div id="seccion-funcionalidades" style="display:none;">
-        <label>¿Querés que te ayudemos a agregar un mail corporativo o a corregir un formulario en tu sitio web?
-          Por ejemplo: crear un correo tipo contacto@tumarca.com, agregar un nuevo formulario de contacto o corregir uno que no está funcionando correctamente.</label><br/>
-        <textarea id="problemasTecnicos"></textarea><br/><br/>
-        <label>¿Qué secciones o funciones nuevas te gustaría agregar a tu sitio actual?</label><br/>
-        <textarea id="funcionalidades"></textarea><br/><br/>
-      </div>
-
-      <div id="seccion-tienda" style="display:none;">
-        <h3>Si tu sitio es una tienda online...</h3>
-        <label>¿Vas a vender productos físicos o digitales?
-          (Por ejemplo: ropa, cursos, descargas, obras, etc.)</label><br/>
-        <textarea id="infoProductos"></textarea><br/><br/>
-        <label>¿A qué correo querés que lleguen las notificaciones de compra?
-          (Es el mail donde vas a recibir los avisos cuando alguien te compre algo)</label><br/>
-        <input type="email" id="correoVentas"/><br/><br/>
-        <label>¿Qué medios de pago querés ofrecer en tu tienda?
-          Ej: Mercado Pago, Transferencia bancaria, Efectivo, PayPal, etc.</label><br/>
-        <textarea id="mediosPago"></textarea><br/><br/>
-        <label>¿Usás algún sistema de facturación?
-          (Por ejemplo: Facturante, Factura A desde AFIP, TiendaNube, otro sistema o aún no)</label><br/>
-        <input type="text" id="sistemaFacturacion"/><br/><br/>
-        <label>¿Tenés la información de tus productos lista para cargar?
-          Podés compartirnos un archivo o carpeta con:
-          
-          Título del producto;
-          
-          Descripción completa;
-          
-          Precio;
-          
-          Peso y dimensiones de la caja de envío (si aplica);
-          
-          Imágenes</label><br/>
-        <input type="url" id="linkProductos"/><br/><br/>
-      </div>
-
-
-      <div id="seccion-productos-dominio" style="display:none;">
-      <h3>Datos del sitio actual</h3>
-      <label> ¿Ya tenés una web publicada o un dominio comprado?</label><br/>
-      <select id="tieneSitio">
-        <option value="">Selecciona...</option>
-        <option value="si">Sí</option>
-        <option value="no">No</option>
-      </select><br/><br/>
-      <div id="sitio-link" style="display:none;">
-        <label>Link del sitio:</label><br/>
-        <input type="url" id="linkSitio"/><br/><br/>
-      </div>
-      <label>¿Tenés acceso al panel de tu hosting o plataforma web actual?
-        Por favor compartí el usuario y contraseña del servicio que uses (WordPress, cPanel, DonWeb, Joomla, etc.)</label><br/>
-      <input type="text" id="accesoHosting"/><br/><br/>
-    </div>
-
-
-
-
-
 
     </form>
 
-
-          
-
-
-
-
+    <sl-button class="btn-enviar" type="button" onclick="mostrarResumen()">¡Mira tu resumen!</sl-button>
+    <sl-button class="btn-enviar" type="submit" onclick="enviarDatos()">Enviar</sl-button>
+    <sl-button class="btn-enviar" type="button" onclick="descargarPDF()">¡Descargar tu resumen!</sl-button>
 
   </div>
 

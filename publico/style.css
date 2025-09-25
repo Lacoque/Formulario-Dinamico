@@ -12,12 +12,25 @@
 body {
     font-family: 'Rubik', sans-serif !important;
     background-color: #f7f7f7;
-    background: url('assets/img/fondo-form-dinamico.png') no-repeat center center fixed;
+    /* background: url('assets/img/fondo-form-dinamico.png') no-repeat center center fixed; */
     transition: visibility 0.3s ease-in-out;
+    margin: 0;
 }
 
 body::-webkit-input-placeholder {
     font-family: 'Rubik', sans-serif;
+}
+
+h2 {
+  font-size: 3rem;
+  font-weight: 600;
+  letter-spacing: -2px;
+}
+
+h4 {
+  font-size: 2.35rem;
+  font-weight: 500;
+  letter-spacing: -2px;
 }
 
 p {
@@ -60,10 +73,13 @@ p {
 
 /* Estilos particulares */
 .container {
-  display: flex;
   width: clamp(200px, 80vw, 90vw);
   max-width: 90%;
   gap: 2rem;
+  margin: 6rem auto;
+}
+
+.container > div:first-of-type {
   margin: 50px auto;
   padding: 20px;
   background: var(--blanco-gris);
@@ -71,6 +87,12 @@ p {
   box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
 
+.container h4 {
+  margin: 1rem 0rem .5rem;
+}
+.container p {
+  margin: .2rem 0rem;
+}
 
 
 
@@ -84,7 +106,7 @@ form {
 }
 
 .form-field {
-  display: flex;
+  /* display: flex; */
 }
 
 
@@ -123,7 +145,6 @@ sl-card:hover {
 
 /* Mensaje de Bienvenida */
 .mensaje-inicio h2 {
-  font-size: 3rem;
   margin: 1rem .3rem .3rem;
   color: var(--blanco-gris);
 }
@@ -158,12 +179,21 @@ sl-card:hover {
 }
 
 section#bienvenidx {
+  padding: 6rem;
+  height: 100vh;
+  background: url('assets/img/fondo-form-dinamico.png') no-repeat center center fixed;
+}
+
+section#bienvenidx > div {
+  background-color: rgb(204, 204, 204, 0.35);
   border-radius: 10px;
   padding: 3rem;
-  margin: 6rem;
-  background-color: rgb(204, 204, 204, 0.35);
 }
 
 .bienvenida-accion {
   text-align: end;
+}
+
+div.container {
+  background-color: var(--blanco-gris);
 }

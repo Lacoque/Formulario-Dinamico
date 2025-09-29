@@ -24,44 +24,51 @@
         <sl-icon slot="prefix" name="arrow-return-left"></sl-icon>
         Volver
       </sl-button>
-      <h4>Seleccioná el servicio</h4>
-      <p>Elegís la que mejor se ajusta a lo que estás necesitando.</p>
     </div>
 
-
+    <!-- Inicia el Formulario -->
     <form class="input-validation-required">
-      
+      <p>Completá tus datos</p>
       <div class="field-form">
-        <sl-input name="name" placeholder="Nombre" aria-placeholder="Nombre" type="text" id="nombreEmpresa" required><sl-icon slot="prefix" name="file-person"></sl-icon></sl-input>
-        <sl-input name="email" placeholder="Correo electrónico" aria-placeholder="Correo electrónico" type="email" required><sl-icon slot="prefix" name="envelope"></sl-icon></sl-input>
+        <sl-input class="input-form" name="name" placeholder="Nombre" aria-placeholder="Nombre" type="text" id="nombreEmpresa" required><sl-icon slot="prefix" name="file-person"></sl-icon></sl-input>
+        <sl-input class="input-form" name="email" placeholder="Correo electrónico" aria-placeholder="Correo electrónico" type="email" required><sl-icon slot="prefix" name="envelope"></sl-icon></sl-input>
       </div>
 
-      <div class="form-field">
+      <div class="apertura-form">
+        <h4>Seleccioná el servicio</h4>
+        <p>Elegís la que mejor se ajusta a lo que estás necesitando.</p>
+      </div>
 
+      <div>
         <div class="card-grid">
           <sl-card class="card-opcion" data-tipo="desarrollo">
-            <sl-badge variant="neutral">Más completo</sl-badge>
-            <h3>Desarrollo</h3>
+            <h5>Desarrollo</h5>
             <p>Nuevo sitio desde cero, con funcionalidades personalizadas.</p>
+            <img src="./assets/img/Delivery-n-2.png" alt="desarrollo">
           </sl-card>
 
           <sl-card class="card-opcion" data-tipo="rediseño">
-            <strong slot="header">Rediseño</strong>
+            <h5>Rediseño</h5>
             <p>Actualización visual y técnica de tu sitio actual.</p>
           </sl-card>
 
           <sl-card class="card-opcion" data-tipo="seo">
-            <strong slot="header">SEO</strong>
+            <h5>SEO</h5>
             <p>Optimización para buscadores y posicionamiento orgánico.</p>
           </sl-card>
 
           <sl-card class="card-opcion" data-tipo="funcionalidades">
-            <strong slot="header">Funcionalidades</strong>
+            <h5>Funcionalidades</h5>
             <p>Integraciones, automatizaciones y mejoras específicas.</p>
           </sl-card>
         </div>
-
-
+        <div class="indicar-sugerencia">
+          <p>Si ninguna opción corresponde con lo que buscás, indicanos como ayudarte</p>
+          <sl-button onclick="window.location.href='https://www.contenidx.com.ar/#contact';">
+            <sl-icon slot="prefix" name="patch-exclamation"></sl-icon>
+            Indicar
+          </sl-button>
+        </div>
 
         <!-- Sección Desarrollo / Rediseño -->
         <div id="seccion-desarrollo-rediseño" style="display:none;">

@@ -27,10 +27,23 @@ h2 {
   letter-spacing: -2px;
 }
 
+h3 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  letter-spacing: -2px;
+}
+
 h4 {
   font-size: 2.35rem;
   font-weight: 500;
   letter-spacing: -2px;
+}
+
+h5 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -1px;
+  margin: .5rem 0rem;
 }
 
 p {
@@ -42,6 +55,7 @@ p {
 :root {
   --blanco-gris: #F2F2F2;
   --tuquesa: #1172A8;
+  --tuquesa-oscuro: #0e5b85;
   --rojo: #C11718;
   --negro: #2D2D2D;
   --negro-texto: #444444;
@@ -69,6 +83,41 @@ p {
   }
 }
 
+.card-opcion::part(base) {
+  background-color: var(--tuquesa);
+  padding: 1rem;
+}
+
+.card-opcion p,
+.card-opcion h5 {
+  color: var(--blanco-gris);
+}
+
+.card-opcion img {
+  opacity: 0;
+  width: 5vw;
+  height: auto;
+  transition: all .3s ease-in-out;
+}
+
+@media (hover:hover) {
+  .card-opcion::part(base):hover {
+    background-color: var(--tuquesa-oscuro);
+    /* background: url('assets/img/Delivery-n-2.png'), linear-gradient(90deg, rgb(14, 91, 133, 0.5), rgb(17, 114, 168, 0.5));
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain; */
+  }
+
+  .card-opcion:hover img {
+    opacity: 1;
+  }
+}
+
+.card-opcion::part(base):active {
+
+}
+
 
 
 /* Estilos particulares */
@@ -80,11 +129,9 @@ p {
 }
 
 .container > div:first-of-type {
-  margin: 50px auto;
-  padding: 20px;
-  background: var(--blanco-gris);
+  margin: 5px auto;
+  padding: 0px 20px;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
 
 .container h4 {
@@ -102,22 +149,24 @@ p {
 
 form {
   padding: 1rem;
-  max-width: 80%;
+  width: 100%;
 }
 
-.form-field {
-  /* display: flex; */
+sl-input::part(base) {
+  border: none;
+  border-radius: 0px;
 }
-
 
 /* Tarjetas */
 
-sl-card {
+sl-card::part(base) {
   cursor: pointer;
-  max-width: 300px;
-  transition: transform 0.3s ease;
+  width: clamp(100px, 17vw, 45vw);
+  height: clamp(100px, 17vw, 45vw);
+  transition: transform 0.1s ease;
 }
-sl-card:hover {
+
+sl-card::part(base):hover {
   transform: scale(1.05);
 }
 
@@ -139,6 +188,21 @@ sl-card:hover {
   border-radius: 10px;
   border: 1px solid #ccc;
   overflow: hidden;
+}
+
+.apertura-form {
+  display: flex;
+  flex-direction: column;
+  margin: 3.5rem 0rem 2rem;
+}
+
+.indicar-sugerencia {
+  margin: 1rem 0rem .5rem;
+  padding: .5rem 0rem;
+  align-items: center;
+  justify-content: end;
+  display: flex;
+  gap: .5rem;
 }
 
 
@@ -192,8 +256,4 @@ section#bienvenidx > div {
 
 .bienvenida-accion {
   text-align: end;
-}
-
-div.container {
-  background-color: var(--blanco-gris);
 }

@@ -28,38 +28,46 @@
 
     <!-- Inicia el Formulario -->
     <form class="input-validation-required">
-      <h4>Completá tus datos</h4>
+      <div class="pasos">
+        <sl-tag variant="primary" size="small">Primero</sl-tag>
+        <p>Rellená con tus datos</p>
+      </div>
       <div class="field-form">
-        <sl-input class="input-form" name="name" placeholder="Nombre" aria-placeholder="Nombre" type="text" id="nombreEmpresa" required><sl-icon slot="prefix" name="file-person"></sl-icon></sl-input>
-        <sl-input class="input-form" name="email" placeholder="Correo electrónico" aria-placeholder="Correo electrónico" type="email" required><sl-icon slot="prefix" name="envelope"></sl-icon></sl-input>
+        <sl-input class="input-form" name="name" placeholder="Nombre de empresa / organización" aria-placeholder="Nombre de empresa" type="text" id="nombreEmpresa" required><sl-icon slot="prefix" name="file-person"></sl-icon></sl-input>
+        <sl-input class="input-form" name="email" placeholder="Correo electrónico" aria-placeholder="Correo electrónico" type="email" id="correo" required><sl-icon slot="prefix" name="envelope"></sl-icon></sl-input>
       </div>
 
       <div class="apertura-form">
+      <div class="pasos">
+        <sl-tag variant="primary" size="small">Segundo</sl-tag>
+        <p>Completá el formulario</p>
+      </div>
         <h4>Seleccioná el servicio</h4>
         <p>Elegís la que mejor se ajusta a lo que estás necesitando.</p>
       </div>
 
-      <div>
+      <div class="elementos-form">
         <div class="card-grid">
-          <sl-card class="card-opcion" data-tipo="desarrollo">
+          <input type="hidden" id="tipoServicio" value="desarrollo" />
+          <sl-card class="card-opcion" data-tipo="desarrollo" value="desarrollo">
             <sl-icon class="seleccionado" name="check-circle-fill"></sl-icon>
             <h5>Desarrollo</h5>
             <p>Nuevo sitio desde cero, con funcionalidades personalizadas.</p>
           </sl-card>
 
-          <sl-card class="card-opcion" data-tipo="rediseño">
+          <sl-card class="card-opcion" data-tipo="rediseño" value="funcionalidades">
             <sl-icon class="seleccionado" name="check-circle-fill"></sl-icon>
             <h5>Rediseño</h5>
             <p>Actualización visual y técnica de tu sitio actual.</p>
           </sl-card>
 
-          <sl-card class="card-opcion" data-tipo="seo">
+          <sl-card class="card-opcion" data-tipo="seo" value="seo">
             <sl-icon class="seleccionado" name="check-circle-fill"></sl-icon>
             <h5>SEO</h5>
             <p>Optimización para buscadores y posicionamiento orgánico.</p>
           </sl-card>
 
-          <sl-card class="card-opcion" data-tipo="funcionalidades">
+          <sl-card class="card-opcion" data-tipo="funcionalidades" value="funcionalidades">
             <sl-icon class="seleccionado" name="check-circle-fill"></sl-icon>
             <h5>Funcionalidades</h5>
             <p>Integraciones, automatizaciones y mejoras específicas.</p>
@@ -73,67 +81,94 @@
           </sl-button>
         </div>
 
+
+
+
+        <!-- <div>
+          <h1>Diseño y desarrollo web</h1>
+          <p>Equipo encargado Contenidx.com.ar. A continuación, contanos qué necesitás de nosotrxs y completá la info clave sobre tu proyecto.
+            Esta información nos va a ayudar a organizar el trabajo y avanzar de forma clara, ordenada y en equipo 🤝</p>
+          <label>Nombre de tu proyecto o empresa <span style="color:red">*</span></label><br/>
+          <sl-input type="text" id="nombreEmpresa" required/><br/><br/>
+          <label>Correo electrónico <span style="color:red">*</span></label><br/>
+          <sl-input type="email" id="correo" required/><br/><br/>
+        </div>
+
+        <label> Tipo de servicio que necesitás <span style="color:red">*</span></label><br/>
+        <sl-select id="tipoServicio">
+          <sl-option value="">Selecciona</sl-option>
+          <sl-option value="desarrollo">Crear una página web desde cero</sl-option>
+          <sl-option value="rediseño">Rediseñar un sitio web que ya tenés</sl-option>
+          <sl-option value="seo"> Mejorar el SEO técnico (para aparecer mejor en Google)</sl-option>
+          <sl-option value="funcionalidades">Agregar o corregir funcionalidades específicas (formularios, carrito, login, etc.)</sl-option>
+        </sl-select><br/><br/> -->
+
+
+
+
         <!-- Sección Desarrollo / Rediseño -->
         <div id="seccion-desarrollo-rediseño" style="display:none;">
           <h3>Información sobre tu proyecto</h3>
           <label>¿Cuál es el objetivo principal de tu sitio web? Por ejemplo: vender productos, recibir consultas, mostrar tu trabajo, agendar turnos, informar sobre tu emprendimiento, etc.</label><br/>
-          <textarea id="objetivo"></textarea><br/><br/>
+          <sl-textarea id="objetivo"></sl-textarea><br/><br/>
           <label>¿Qué secciones o funciones te gustaría que tenga tu sitio? Ejemplos: blog, formulario de contacto, tienda online (para productos físicos o digitales), área de usuarios, agenda de turnos, etc.</label><br/>
-          <textarea id="funcionalidades"></textarea><br/><br/>
-          <label>¿Ya tenés un diseño pensado para tu sitio? (Puede ser un boceto en Figma, Canva, PDF, o cualquier otra herramienta. Si no tenés, ¡no hay problema!)</label><br/>
-          <select id="tieneDiseno">
-            <option value="">Selecciona...</option>
-            <option value="si">Sí</option>
-            <option value="no">No</option>
-          </select><br/><br/>
+          <sl-textarea id="funcionalidades"></sl-textarea><br/><br/>
+          <div class="label-drop">
+            <label>¿Ya tenés un diseño pensado para tu sitio? (Puede ser un boceto en Figma, Canva, PDF, o cualquier otra herramienta. Si no tenés, ¡no hay problema!)</label><br/>
+            <sl-select id="tieneDiseno">
+              <sl-option value="">Selecciona...</sl-option>
+              <sl-option value="si">Sí</sl-option>
+              <sl-option value="no">No</sl-option>
+            </sl-select><br/><br/>
+          </div>
           <div id="diseno-no" style="display:none;">
             <label>¿Hay páginas web, diseños o estilos que te gusten y sirvan de inspiración? Esto nos ayuda a entender mejor tu gusto y estilo. ¡Podés compartir links, imágenes o descripciones!</label><br/>
-            <textarea id="referenciasDiseno"></textarea><br/><br/>
+            <sl-textarea id="referenciasDiseno"></sl-textarea><br/><br/>
             <label>¿Contás con un manual de marca o algún material gráfico que debamos respetar? Ej: logo, paleta de colores, tipografías, etc.</label><br/>
-            <input type="text" id="manualMarca"/><br/><br/>
+            <sl-input type="text" id="manualMarca"/><br/><br/>
           </div>
         </div>
 
         <div id="seccion-rediseño-seo" style="display:none;">
           <h3>Rastreo y Accesibilidad en Goolge</h3>
           <label>¿Querés que tu sitio aparezca en Google y sea más fácil de encontrar por tus clientes?(Trabajamos con herramientas de rastreo y optimización para mejorar la visibilidad de tu web)      </label><br/>
-          <textarea id="problemasTecnicos"></textarea><br/><br/>
+          <sl-textarea id="problemasTecnicos"></sl-textarea><br/><br/>
           <label> ¿Tu sitio presenta errores técnicos o problemas de funcionamiento?(Ej: carga lenta, enlaces rotos, errores de visualización, etc.)</label><br/>
-          <textarea id="problemasTecnicos"></textarea><br/><br/>
+          <sl-textarea id="problemasTecnicos"></sl-textarea><br/><br/>
           <label>¿Contás con los accesos o materiales que podríamos necesitar?</label><br/>
-          <input type="text" id="accesosMateriales"/><br/><br/>
+          <sl-input type="text" id="accesosMateriales"/><br/><br/>
         </div>
 
         <div id="seccion-funcionalidades" style="display:none;">
           <label>¿Querés que te ayudemos a agregar un mail corporativo o a corregir un formulario en tu sitio web?
             Por ejemplo: crear un correo tipo contacto@tumarca.com, agregar un nuevo formulario de contacto o corregir uno que no está funcionando correctamente.</label><br/>
-          <textarea id="problemasTecnicos"></textarea><br/><br/>
+          <sl-textarea id="problemasTecnicos"></sl-textarea><br/><br/>
           <label>¿Qué secciones o funciones nuevas te gustaría agregar a tu sitio actual?</label><br/>
-          <textarea id="funcionalidades"></textarea><br/><br/>
+          <sl-textarea id="funcionalidades"></sl-textarea><br/><br/>
         </div>
 
         <div id="seccion-funcionalidades" style="display:none;">
           <label>¿Querés que te ayudemos a agregar un mail corporativo o a corregir un formulario en tu sitio web?
             Por ejemplo: crear un correo tipo contacto@tumarca.com, agregar un nuevo formulario de contacto o corregir uno que no está funcionando correctamente.</label><br/>
-          <textarea id="problemasTecnicos"></textarea><br/><br/>
+          <sl-textarea id="problemasTecnicos"></sl-textarea><br/><br/>
           <label>¿Qué secciones o funciones nuevas te gustaría agregar a tu sitio actual?</label><br/>
-          <textarea id="funcionalidades"></textarea><br/><br/>
+          <sl-textarea id="funcionalidades"></sl-textarea><br/><br/>
         </div>
 
         <div id="seccion-tienda" style="display:none;">
           <h3>Si tu sitio es una tienda online...</h3>
           <label>¿Vas a vender productos físicos o digitales?
             (Por ejemplo: ropa, cursos, descargas, obras, etc.)</label><br/>
-          <textarea id="infoProductos"></textarea><br/><br/>
+          <sl-textarea id="infoProductos"></sl-textarea><br/><br/>
           <label>¿A qué correo querés que lleguen las notificaciones de compra?
             (Es el mail donde vas a recibir los avisos cuando alguien te compre algo)</label><br/>
-          <input type="email" id="correoVentas"/><br/><br/>
+          <sl-input type="email" id="correoVentas"/><br/><br/>
           <label>¿Qué medios de pago querés ofrecer en tu tienda?
             Ej: Mercado Pago, Transferencia bancaria, Efectivo, PayPal, etc.</label><br/>
-          <textarea id="mediosPago"></textarea><br/><br/>
+          <sl-textarea id="mediosPago"></sl-textarea><br/><br/>
           <label>¿Usás algún sistema de facturación?
             (Por ejemplo: Facturante, Factura A desde AFIP, TiendaNube, otro sistema o aún no)</label><br/>
-          <input type="text" id="sistemaFacturacion"/><br/><br/>
+          <sl-input type="text" id="sistemaFacturacion"/><br/><br/>
           <label>¿Tenés la información de tus productos lista para cargar?
             Podés compartirnos un archivo o carpeta con:
             
@@ -146,34 +181,38 @@
             Peso y dimensiones de la caja de envío (si aplica);
             
             Imágenes</label><br/>
-          <input type="url" id="linkProductos"/><br/><br/>
+          <sl-input type="url" id="linkProductos"/><br/><br/>
         </div>
 
         <div id="seccion-productos-dominio" style="display:none;">
           <h3>Datos del sitio actual</h3>
           <label> ¿Ya tenés una web publicada o un dominio comprado?</label><br/>
-          <select id="tieneSitio">
-            <option value="">Selecciona...</option>
-            <option value="si">Sí</option>
-            <option value="no">No</option>
-          </select><br/><br/>
+          <sl-select id="tieneSitio">
+            <sl-option value="">Selecciona...</sl-option>
+            <sl-option value="si">Sí</sl-option>
+            <sl-option value="no">No</sl-option>
+          </sl-select><br/><br/>
           <div id="sitio-link" style="display:none;">
             <label>Link del sitio:</label><br/>
-            <input type="url" id="linkSitio"/><br/><br/>
+            <sl-input type="url" id="linkSitio"/><br/><br/>
           </div>
           <label>¿Tenés acceso al panel de tu hosting o plataforma web actual?
             Por favor compartí el usuario y contraseña del servicio que uses (WordPress, cPanel, DonWeb, Joomla, etc.)</label><br/>
-          <input type="text" id="accesoHosting"/><br/><br/>
+          <sl-input type="text" id="accesoHosting"/><br/><br/>
         </div>
 
       </div>
 
     </form>
 
-    <sl-button class="btn-enviar" type="button" onclick="mostrarResumen()">¡Mira tu resumen!</sl-button>
-    <sl-button class="btn-enviar" type="submit" onclick="enviarDatos()">Enviar</sl-button>
-    <sl-button class="btn-enviar" type="button" onclick="descargarPDF()">¡Descargar tu resumen!</sl-button>
+    <div id="resumen" style="display:none; background:#f9f9f9; padding:15px; border-radius:8px;"></div>
+      <sl-button type="button" onclick="mostrarResumen()">¡Mira tu resumen!</sl-button>
+      <sl-button type="submit" onclick="enviarDatos()">Enviar</sl-button>
+      <sl-button type="button" onclick="descargarPDF()">¡Descargar tu resumen!</sl-button>
+    </div>
 
+
+    
   </div>
 
 
@@ -184,18 +223,18 @@
     <p>Equipo encargado Contenidx.com.ar. A continuación, contanos qué necesitás de nosotrxs y completá la info clave sobre tu proyecto.
       Esta información nos va a ayudar a organizar el trabajo y avanzar de forma clara, ordenada y en equipo 🤝</p>
     <label>Nombre de tu proyecto o empresa <span style="color:red">*</span></label><br/>
-    <input type="text" id="nombreEmpresa" required/><br/><br/>
+    <sl-input type="text" id="nombreEmpresa" required/><br/><br/>
     <label>Correo electrónico <span style="color:red">*</span></label><br/>
-    <input type="email" id="correo" required/><br/><br/>
+    <sl-input type="email" id="correo" required/><br/><br/>
 
     <label> Tipo de servicio que necesitás <span style="color:red">*</span></label><br/>
-    <select id="tipoServicio">
-      <option value="">Selecciona</option>
-      <option value="desarrollo">Crear una página web desde cero</option>
-      <option value="rediseño">Rediseñar un sitio web que ya tenés</option>
-      <option value="seo"> Mejorar el SEO técnico (para aparecer mejor en Google)</option>
-      <option value="funcionalidades">Agregar o corregir funcionalidades específicas (formularios, carrito, login, etc.)</option>
-    </select><br/><br/> -->
+    <sl-select id="tipoServicio">
+      <sl-option value="">Selecciona</sl-option>
+      <sl-option value="desarrollo">Crear una página web desde cero</sl-option>
+      <sl-option value="rediseño">Rediseñar un sitio web que ya tenés</sl-option>
+      <sl-option value="seo"> Mejorar el SEO técnico (para aparecer mejor en Google)</sl-option>
+      <sl-option value="funcionalidades">Agregar o corregir funcionalidades específicas (formularios, carrito, login, etc.)</sl-option>
+    </sl-select><br/><br/> -->
 
 
 
@@ -205,20 +244,20 @@
     <!-- <div id="seccion-desarrollo-rediseño" style="display:none;">
       <h3>Información sobre tu proyecto</h3>
       <label>¿Cuál es el objetivo principal de tu sitio web? Por ejemplo: vender productos, recibir consultas, mostrar tu trabajo, agendar turnos, informar sobre tu emprendimiento, etc.</label><br/>
-      <textarea id="objetivo"></textarea><br/><br/>
+      <sl-textarea id="objetivo"></sl-textarea><br/><br/>
       <label>¿Qué secciones o funciones te gustaría que tenga tu sitio? Ejemplos: blog, formulario de contacto, tienda online (para productos físicos o digitales), área de usuarios, agenda de turnos, etc.</label><br/>
-      <textarea id="funcionalidades"></textarea><br/><br/>
+      <sl-textarea id="funcionalidades"></sl-textarea><br/><br/>
       <label>¿Ya tenés un diseño pensado para tu sitio? (Puede ser un boceto en Figma, Canva, PDF, o cualquier otra herramienta. Si no tenés, ¡no hay problema!)</label><br/>
-      <select id="tieneDiseno">
-        <option value="">Selecciona...</option>
-        <option value="si">Sí</option>
-        <option value="no">No</option>
-      </select><br/><br/>
+      <sl-select id="tieneDiseno">
+        <sl-option value="">Selecciona...</sl-option>
+        <sl-option value="si">Sí</sl-option>
+        <sl-option value="no">No</sl-option>
+      </sl-select><br/><br/>
       <div id="diseno-no" style="display:none;">
         <label>¿Hay páginas web, diseños o estilos que te gusten y sirvan de inspiración? Esto nos ayuda a entender mejor tu gusto y estilo. ¡Podés compartir links, imágenes o descripciones!</label><br/>
-        <textarea id="referenciasDiseno"></textarea><br/><br/>
+        <sl-textarea id="referenciasDiseno"></sl-textarea><br/><br/>
         <label>¿Contás con un manual de marca o algún material gráfico que debamos respetar? Ej: logo, paleta de colores, tipografías, etc.</label><br/>
-        <input type="text" id="manualMarca"/><br/><br/>
+        <sl-input type="text" id="manualMarca"/><br/><br/>
       </div>
     </div> -->
 
@@ -230,11 +269,11 @@
     <!-- <div id="seccion-rediseño-seo" style="display:none;">
       <h3>Rastreo y Accesibilidad en Goolge</h3>
       <label>¿Querés que tu sitio aparezca en Google y sea más fácil de encontrar por tus clientes?(Trabajamos con herramientas de rastreo y optimización para mejorar la visibilidad de tu web)      </label><br/>
-      <textarea id="problemasTecnicos"></textarea><br/><br/>
+      <sl-textarea id="problemasTecnicos"></sl-textarea><br/><br/>
       <label> ¿Tu sitio presenta errores técnicos o problemas de funcionamiento?(Ej: carga lenta, enlaces rotos, errores de visualización, etc.)</label><br/>
-      <textarea id="problemasTecnicos"></textarea><br/><br/>
+      <sl-textarea id="problemasTecnicos"></sl-textarea><br/><br/>
       <label>¿Contás con los accesos o materiales que podríamos necesitar?</label><br/>
-      <input type="text" id="accesosMateriales"/><br/><br/>
+      <sl-input type="text" id="accesosMateriales"/><br/><br/>
     </div> -->
     
     
@@ -243,9 +282,9 @@
     <!-- <div id="seccion-funcionalidades" style="display:none;">
       <label>¿Querés que te ayudemos a agregar un mail corporativo o a corregir un formulario en tu sitio web?
         Por ejemplo: crear un correo tipo contacto@tumarca.com, agregar un nuevo formulario de contacto o corregir uno que no está funcionando correctamente.</label><br/>
-      <textarea id="problemasTecnicos"></textarea><br/><br/>
+      <sl-textarea id="problemasTecnicos"></sl-textarea><br/><br/>
       <label>¿Qué secciones o funciones nuevas te gustaría agregar a tu sitio actual?</label><br/>
-      <textarea id="funcionalidades"></textarea><br/><br/>
+      <sl-textarea id="funcionalidades"></sl-textarea><br/><br/>
     </div> -->
     
     
@@ -254,18 +293,18 @@
     <!-- <div id="seccion-productos-dominio" style="display:none;">
       <h3>Datos del sitio actual</h3>
       <label> ¿Ya tenés una web publicada o un dominio comprado?</label><br/>
-      <select id="tieneSitio">
-        <option value="">Selecciona...</option>
-        <option value="si">Sí</option>
-        <option value="no">No</option>
-      </select><br/><br/>
+      <sl-select id="tieneSitio">
+        <sl-option value="">Selecciona...</sl-option>
+        <sl-option value="si">Sí</sl-option>
+        <sl-option value="no">No</sl-option>
+      </sl-select><br/><br/>
       <div id="sitio-link" style="display:none;">
         <label>Link del sitio:</label><br/>
-        <input type="url" id="linkSitio"/><br/><br/>
+        <sl-input type="url" id="linkSitio"/><br/><br/>
       </div>
       <label>¿Tenés acceso al panel de tu hosting o plataforma web actual?
         Por favor compartí el usuario y contraseña del servicio que uses (WordPress, cPanel, DonWeb, Joomla, etc.)</label><br/>
-      <input type="text" id="accesoHosting"/><br/><br/>
+      <sl-input type="text" id="accesoHosting"/><br/><br/>
     </div> -->
 
 
@@ -275,16 +314,16 @@
       <h3>Si tu sitio es una tienda online...</h3>
       <label>¿Vas a vender productos físicos o digitales?
         (Por ejemplo: ropa, cursos, descargas, obras, etc.)</label><br/>
-      <textarea id="infoProductos"></textarea><br/><br/>
+      <sl-textarea id="infoProductos"></sl-textarea><br/><br/>
       <label>¿A qué correo querés que lleguen las notificaciones de compra?
         (Es el mail donde vas a recibir los avisos cuando alguien te compre algo)</label><br/>
-      <input type="email" id="correoVentas"/><br/><br/>
+      <sl-input type="email" id="correoVentas"/><br/><br/>
       <label>¿Qué medios de pago querés ofrecer en tu tienda?
         Ej: Mercado Pago, Transferencia bancaria, Efectivo, PayPal, etc.</label><br/>
-      <textarea id="mediosPago"></textarea><br/><br/>
+      <sl-textarea id="mediosPago"></sl-textarea><br/><br/>
       <label>¿Usás algún sistema de facturación?
         (Por ejemplo: Facturante, Factura A desde AFIP, TiendaNube, otro sistema o aún no)</label><br/>
-      <input type="text" id="sistemaFacturacion"/><br/><br/>
+      <sl-input type="text" id="sistemaFacturacion"/><br/><br/>
       <label>¿Tenés la información de tus productos lista para cargar?
         Podés compartirnos un archivo o carpeta con:
         
@@ -297,7 +336,7 @@
         Peso y dimensiones de la caja de envío (si aplica);
         
         Imágenes</label><br/>
-      <input type="url" id="linkProductos"/><br/><br/>
+      <sl-input type="url" id="linkProductos"/><br/><br/>
     </div> -->
 
     
@@ -320,7 +359,7 @@
 
 
   <script type="module">
-    const form = document.querySelector('.input-validation-required');
+    const form = document.querysl-selector('.input-validation-required');
     
     await Promise.all([
       customElements.whenDefined('sl-button'),
@@ -338,6 +377,6 @@
   </script>
 
   <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"></script>
-  <script src="/script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html> 

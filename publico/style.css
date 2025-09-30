@@ -106,7 +106,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .card-opcion.activo::part(base) {
-  background-color: var(--turquesa-oscuro-select);
+  background-color: var(--blanco-gris);
   border: 2px solid var(--turquesa);
 }
 
@@ -171,7 +171,17 @@ sl-input::part(base) {
   border-radius: 0px;
 }
 
+.pasos {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
 
+.label-drop {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
 
 
 /*/////////////     Tarjetas */
@@ -212,12 +222,18 @@ sl-card::part(base):hover {
 }
 
 .indicar-sugerencia {
-  margin: 1rem 0rem .5rem;
+  margin: 1rem 0rem 1.5rem;
   padding: .5rem 0rem;
   align-items: center;
   justify-content: end;
   display: flex;
   gap: .5rem;
+}
+
+.elementos-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.45rem;
 }
 
 

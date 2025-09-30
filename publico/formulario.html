@@ -19,15 +19,18 @@
 </head>
 <body>
   <div class="container">
-    <div>
+    <div class="botones-iniciales">
       <sl-button onclick="window.history.back()">
         <sl-icon slot="prefix" name="arrow-return-left"></sl-icon>
         Volver
       </sl-button>
+      <sl-button type="button" onclick="location.reload()">
+        <sl-icon slot="prefix" name="arrow-counterclockwise"></sl-icon>
+      </sl-button>
     </div>
 
     <!-- Inicia el Formulario -->
-    <form class="input-validation-required">
+    <form class="input-validation-required" id="formulario">
       <div class="pasos">
         <sl-tag variant="primary" size="small">Primero</sl-tag>
         <p>Rellená con tus datos</p>
@@ -80,31 +83,6 @@
             Indicar
           </sl-button>
         </div>
-
-
-
-
-        <!-- <div>
-          <h1>Diseño y desarrollo web</h1>
-          <p>Equipo encargado Contenidx.com.ar. A continuación, contanos qué necesitás de nosotrxs y completá la info clave sobre tu proyecto.
-            Esta información nos va a ayudar a organizar el trabajo y avanzar de forma clara, ordenada y en equipo 🤝</p>
-          <label>Nombre de tu proyecto o empresa <span style="color:red">*</span></label><br/>
-          <sl-input type="text" id="nombreEmpresa" required/><br/><br/>
-          <label>Correo electrónico <span style="color:red">*</span></label><br/>
-          <sl-input type="email" id="correo" required/><br/><br/>
-        </div>
-
-        <label> Tipo de servicio que necesitás <span style="color:red">*</span></label><br/>
-        <sl-select id="tipoServicio">
-          <sl-option value="">Selecciona</sl-option>
-          <sl-option value="desarrollo">Crear una página web desde cero</sl-option>
-          <sl-option value="rediseño">Rediseñar un sitio web que ya tenés</sl-option>
-          <sl-option value="seo"> Mejorar el SEO técnico (para aparecer mejor en Google)</sl-option>
-          <sl-option value="funcionalidades">Agregar o corregir funcionalidades específicas (formularios, carrito, login, etc.)</sl-option>
-        </sl-select><br/><br/> -->
-
-
-
 
         <!-- Sección Desarrollo / Rediseño -->
         <div id="seccion-desarrollo-rediseño" style="display:none;">

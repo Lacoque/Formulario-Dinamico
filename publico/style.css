@@ -141,12 +141,6 @@ h1, h2, h3, h4, h5, h6, p {
   margin: 6rem auto;
 }
 
-.container > div:first-of-type {
-  margin: 5px auto;
-  padding: 0px 20px;
-  border-radius: 8px;
-}
-
 .container h4 {
   margin: 1rem 0rem .5rem;
 }
@@ -183,6 +177,18 @@ sl-input::part(base) {
   align-items: center;
 }
 
+div.botones-iniciales {
+  position: sticky;
+  top: 1rem;
+  display: flex;
+  margin: 5px auto;
+  padding: 20px 20px;
+  border-radius: 8px;
+  justify-content: space-between;
+  z-index: 999999;
+  backdrop-filter: blur(15px);
+  /* background: linear-gradient(180deg, var(--blanco-gris), rgb(242, 242, 242, 0.1)); */
+}
 
 /*/////////////     Tarjetas */
 

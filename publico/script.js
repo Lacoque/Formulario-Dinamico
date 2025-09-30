@@ -273,7 +273,7 @@ async function descargarPDF() {
   doc.setFontSize(10);
   doc.text("Si crees que te falto algo podes escribirnos este mail info@contenidx.com.ar", 10, finalY + espacio);
   doc.text("Gracias <3", 10, finalY + espacio + 7); 
-  doc.text("Contenidx.com.ar", 10, finalY + espacio + 14); 
+  doc.text("contenidx.com.ar", 10, finalY + espacio + 14); 
 
   doc.save("formulario_contenidx.pdf");
 }
@@ -344,8 +344,9 @@ async function enviarDatos() {
     alert("❌ No se pudo conectar con el servidor.");
   }
 }
-  if (response.ok) {
-    alert("✅ ¡Gracias! Tu información ha sido enviada.");
-  } else {
-    alert("❌ Hubo un error al enviar tu formulario.");
-  }
+
+if (response.ok) {
+  alert("✅ ¡Gracias! Tu información ha sido enviada.");
+} else {
+  alert("❌ Hubo un error al enviar tu formulario.");
+}

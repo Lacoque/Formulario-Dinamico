@@ -28,7 +28,7 @@
 
     <!-- Inicia el Formulario -->
     <form class="input-validation-required">
-      <p>Completá tus datos</p>
+      <h4>Completá tus datos</h4>
       <div class="field-form">
         <sl-input class="input-form" name="name" placeholder="Nombre" aria-placeholder="Nombre" type="text" id="nombreEmpresa" required><sl-icon slot="prefix" name="file-person"></sl-icon></sl-input>
         <sl-input class="input-form" name="email" placeholder="Correo electrónico" aria-placeholder="Correo electrónico" type="email" required><sl-icon slot="prefix" name="envelope"></sl-icon></sl-input>
@@ -42,22 +42,25 @@
       <div>
         <div class="card-grid">
           <sl-card class="card-opcion" data-tipo="desarrollo">
+            <sl-icon class="seleccionado" name="check-circle-fill"></sl-icon>
             <h5>Desarrollo</h5>
             <p>Nuevo sitio desde cero, con funcionalidades personalizadas.</p>
-            <img src="./assets/img/Delivery-n-2.png" alt="desarrollo">
           </sl-card>
 
           <sl-card class="card-opcion" data-tipo="rediseño">
+            <sl-icon class="seleccionado" name="check-circle-fill"></sl-icon>
             <h5>Rediseño</h5>
             <p>Actualización visual y técnica de tu sitio actual.</p>
           </sl-card>
 
           <sl-card class="card-opcion" data-tipo="seo">
+            <sl-icon class="seleccionado" name="check-circle-fill"></sl-icon>
             <h5>SEO</h5>
             <p>Optimización para buscadores y posicionamiento orgánico.</p>
           </sl-card>
 
           <sl-card class="card-opcion" data-tipo="funcionalidades">
+            <sl-icon class="seleccionado" name="check-circle-fill"></sl-icon>
             <h5>Funcionalidades</h5>
             <p>Integraciones, automatizaciones y mejoras específicas.</p>
           </sl-card>
@@ -109,11 +112,6 @@
           <textarea id="funcionalidades"></textarea><br/><br/>
         </div>
 
-
-
-
-
-
         <div id="seccion-funcionalidades" style="display:none;">
           <label>¿Querés que te ayudemos a agregar un mail corporativo o a corregir un formulario en tu sitio web?
             Por ejemplo: crear un correo tipo contacto@tumarca.com, agregar un nuevo formulario de contacto o corregir uno que no está funcionando correctamente.</label><br/>
@@ -150,7 +148,6 @@
             Imágenes</label><br/>
           <input type="url" id="linkProductos"/><br/><br/>
         </div>
-
 
         <div id="seccion-productos-dominio" style="display:none;">
           <h3>Datos del sitio actual</h3>

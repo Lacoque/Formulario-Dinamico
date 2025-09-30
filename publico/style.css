@@ -12,7 +12,6 @@
 body {
     font-family: 'Rubik', sans-serif !important;
     background-color: #f7f7f7;
-    /* background: url('assets/img/fondo-form-dinamico.png') no-repeat center center fixed; */
     transition: visibility 0.3s ease-in-out;
     margin: 0;
 }
@@ -52,10 +51,16 @@ p {
   line-height: 1.45;
 }
 
+h1, h2, h3, h4, h5, h6, p {
+  color: var(--negro-texto);
+}
+
 :root {
   --blanco-gris: #F2F2F2;
-  --tuquesa: #1172A8;
-  --tuquesa-oscuro: #0e5b85;
+  --blanco-gris-oscuro: #e6e6e6;
+  --turquesa: #1172A8;
+  --turquesa-oscuro: #0e5b85;
+  --turquesa-oscuro-select: #093e5a;
   --rojo: #C11718;
   --negro: #2D2D2D;
   --negro-texto: #444444;
@@ -65,13 +70,13 @@ p {
 
 
 
-/* Estilos personalizados para Shoelace */
+/*/////////////     Estilos personalizados para Shoelace */
 
 .btn-enviar::part(base) {
   font-family: 'Rubik', sans-serif !important;
   font-weight: 200;
   color: var(--blanco-gris);
-  background: var(--tuquesa);
+  background: var(--turquesa);
   transition: all .35s ease-in-out;
 }
 
@@ -79,13 +84,14 @@ p {
   .btn-enviar::part(base):hover {
     color: var(--blanco-gris);
     background: var(--negro);
-    border: 1px solid var(--tuquesa);
+    border: 1px solid var(--turquesa);
   }
 }
 
 .card-opcion::part(base) {
-  background-color: var(--tuquesa);
+  background-color: var(--turquesa);
   padding: 1rem;
+  position: relative;
 }
 
 .card-opcion p,
@@ -93,34 +99,41 @@ p {
   color: var(--blanco-gris);
 }
 
-.card-opcion img {
-  opacity: 0;
-  width: 5vw;
-  height: auto;
-  transition: all .3s ease-in-out;
-}
-
 @media (hover:hover) {
   .card-opcion::part(base):hover {
-    background-color: var(--tuquesa-oscuro);
-    /* background: url('assets/img/Delivery-n-2.png'), linear-gradient(90deg, rgb(14, 91, 133, 0.5), rgb(17, 114, 168, 0.5));
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain; */
-  }
-
-  .card-opcion:hover img {
-    opacity: 1;
+    background-color: var(--turquesa-oscuro);
   }
 }
 
-.card-opcion::part(base):active {
+.card-opcion.activo::part(base) {
+  background-color: var(--turquesa-oscuro-select);
+  border: 2px solid var(--turquesa);
+}
 
+.card-opcion.activo p,
+.card-opcion.activo h5 {
+  color: var(--turquesa);
+}
+
+.card-opcion sl-icon.seleccionado {
+  font-size: 1.25rem;
+  color: var(--turquesa);
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  opacity: 0;
+  z-index: 99999;
+  border-radius: 50%;
+  background-color: var(--blanco-gris);
+}
+.card-opcion.activo sl-icon.seleccionado {
+  opacity: 1;
 }
 
 
 
-/* Estilos particulares */
+/*/////////////     Estilos particulares */
+
 .container {
   width: clamp(200px, 80vw, 90vw);
   max-width: 90%;
@@ -145,7 +158,8 @@ p {
 
 
 
-/* Formulario  */
+
+/*/////////////     Formulario */
 
 form {
   padding: 1rem;
@@ -157,7 +171,10 @@ sl-input::part(base) {
   border-radius: 0px;
 }
 
-/* Tarjetas */
+
+
+
+/*/////////////     Tarjetas */
 
 sl-card::part(base) {
   cursor: pointer;
@@ -191,8 +208,6 @@ sl-card::part(base):hover {
 }
 
 .apertura-form {
-  display: flex;
-  flex-direction: column;
   margin: 3.5rem 0rem 2rem;
 }
 
@@ -207,7 +222,11 @@ sl-card::part(base):hover {
 
 
 
-/* Mensaje de Bienvenida */
+
+
+
+/*/////////////     Mensaje de Bienvenida */
+
 .mensaje-inicio h2 {
   margin: 1rem .3rem .3rem;
   color: var(--blanco-gris);
@@ -256,4 +275,28 @@ section#bienvenidx > div {
 
 .bienvenida-accion {
   text-align: end;
+}
+
+
+
+
+/* /////////////     Sectores de formulario */
+
+#seccion-desarrollo-rediseño,
+#seccion-rediseño-seo,
+#seccion-funcionalidades,
+#seccion-tienda,
+#seccion-productos-dominio {
+  padding: 2rem;
+  margin-top: 1rem;
+  border-radius: 10px;
+  background-color: var(--blanco-gris-oscuro);
+}
+
+#seccion-desarrollo-rediseño h3,
+#seccion-rediseño-seo h3,
+#seccion-funcionalidades h3,
+#seccion-tienda h3,
+#seccion-productos-dominio h3 {
+  margin: .5rem 0rem 1rem;
 }

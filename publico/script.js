@@ -57,18 +57,13 @@ document.querySelectorAll(".card-opcion").forEach(card => {
       document.getElementById("seccion-tienda").style.display = "block";
       document.getElementById("seccion-funcionalidades").style.display = "block";
     }
-    
-
-    // card.addEventListener("click", function () {
-    //   if(tipo === "desarrollo" || tipo === "rediseño") {
-    //     setTimeout(function () {
-    //       document.getElementById("seccion-desarrollo-rediseño").scrollIntoView({ behavior: "smooth" });
-    //     }, 1000);
-    //   };
-    // });
 
 
+  });
 
+  card.addEventListener('click', () => {
+    document.querySelectorAll('.card-opcion').forEach(c => c.classList.remove('activo'));
+    card.classList.add('activo');
   });
 });
 
@@ -354,4 +349,3 @@ async function enviarDatos() {
   } else {
     alert("❌ Hubo un error al enviar tu formulario.");
   }
-  

@@ -16,6 +16,9 @@
   
   <!-- Shoelace -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
+
+  <link id="favicon" rel="icon" href="./assets/img/favicon.png" type="image/x-icon" />
+
 </head>
 <body>
   <div class="container">
@@ -33,7 +36,7 @@
     <form class="input-validation-required" id="formulario">
       <div class="pasos">
         <sl-tag variant="primary" size="small">Primero</sl-tag>
-        <p>Rellená con tus datos</p>
+        <p>Rellená con tus datos <span>*</span></p>
       </div>
       <div class="field-form">
         <sl-input class="input-form" name="name" placeholder="Nombre de empresa / organización" aria-placeholder="Nombre de empresa" type="text" id="nombreEmpresa" required><sl-icon slot="prefix" name="file-person"></sl-icon></sl-input>
@@ -43,7 +46,7 @@
       <div class="apertura-form">
       <div class="pasos">
         <sl-tag variant="primary" size="small">Segundo</sl-tag>
-        <p>Completá el formulario</p>
+        <p>Completá el formulario <span>*</span></p>
       </div>
         <h4>Seleccioná el servicio</h4>
         <p>Elegís la que mejor se ajusta a lo que estás necesitando.</p>
@@ -335,7 +338,12 @@
 
 
 
+<sl-alert id="alert-empresa" variant="warning" closable duration="3000">
+  <sl-icon slot="icon" name="info-circle"></sl-icon>
+  ⚠️ Por favor, ingresa el nombre del proyecto o empresa.
+</sl-alert>
 
+  
   <script type="module">
     const form = document.querysl-selector('.input-validation-required');
     

@@ -283,22 +283,22 @@ async function enviarDatos() {
   const tipoServicio = document.getElementById("tipoServicio").value.trim();
 
   if (!nombreEmpresa) {
-    alert("⚠️ Por favor, ingresa el nombre del proyecto o empresa.");
+    mostrarAlerta("⚠️ Por favor, ingresa el nombre del proyecto o empresa.")
     return;
   }
 
   if (!correo) {
-    alert("⚠️ El correo electrónico es obligatorio.");
+    mostrarAlerta("⚠️ El correo electrónico es obligatorio.");
     return;
   }
 
   if (!isValidEmail(correo)) {
-    alert("⚠️ Por favor, ingresa un correo electrónico válido.");
+    mostrarAlerta("⚠️ Por favor, ingresa un correo electrónico válido.");
     return;
   }
 
   if (!tipoServicio) {
-    alert("⚠️ Por favor, selecciona un tipo de servicio.");
+    mostrarAlerta("⚠️ Por favor, selecciona un tipo de servicio.");
     return;
   }
 
@@ -335,18 +335,45 @@ async function enviarDatos() {
     });
 
     if (response.ok) {
-      alert("✅ ¡Gracias! Tu información ha sido enviada.");
+      mostrarAlertaExito("✅ ¡Gracias! Tu información ha sido enviada.")
+      // alert("✅ ¡Gracias! Tu información ha sido enviada.");
     } else {
-      alert("❌ Hubo un error al enviar tu formulario.");
+      mostrarAlerta("❌ Hubo un error al enviar tu formulario.");
+      // alert("❌ Hubo un error al enviar tu formulario.");
     }
   } catch (error) {
     console.error("❌ Error de conexión:", error);
-    alert("❌ No se pudo conectar con el servidor.");
+    mostrarAlerta("❌ No se pudo conectar con el servidor.");
+    // alert("❌ No se pudo conectar con el servidor.");
   }
 }
 
 if (response.ok) {
-  alert("✅ ¡Gracias! Tu información ha sido enviada.");
+  mostrarAlertaExito("✅ ¡Gracias! Tu información ha sido enviada.");
 } else {
-  alert("❌ Hubo un error al enviar tu formulario.");
+  mostrarAlerta("❌ Hubo un error al enviar tu formulario.");
+}
+
+
+
+function mostrarAlerta(mensaje, tipo = 'warning') {
+  const alert = document.createElement('sl-alert');
+  alert.variant = tipo;
+  alert.closable = true;
+  alert.duration = 3000;
+  alert.innerHTML = mensaje;
+  document.body.appendChild(alert);
+  alert.show();
+  alert.toast();
+}
+
+function mostrarAlertaExito(mensaje, tipo = 'success') {
+  const alert = document.createElement('sl-alert');
+  alert.variant = tipo;
+  alert.closable = true;
+  alert.duration = 3000;
+  alert.innerHTML = mensaje;
+  document.body.appendChild(alert);
+  alert.show();
+  alert.toast();
 }

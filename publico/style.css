@@ -122,7 +122,7 @@ h1, h2, h3, h4, h5, h6, p {
   top: -10px;
   right: -10px;
   opacity: 0;
-  z-index: 99999;
+  z-index: 9;
   border-radius: 50%;
   background-color: var(--blanco-gris);
 }
@@ -171,6 +171,18 @@ sl-input::part(base) {
   align-items: center;
 }
 
+.pasos p {
+  font-weight: 400;
+  font-size: .85rem;
+  text-transform: uppercase;
+}
+
+.pasos p span {
+  color: #C11718;
+  font-weight: 400;
+  font-size: large;
+}
+
 .label-drop {
   display: flex;
   gap: 1rem;
@@ -185,9 +197,8 @@ div.botones-iniciales {
   padding: 20px 20px;
   border-radius: 8px;
   justify-content: space-between;
-  z-index: 999999;
+  z-index: 99;
   backdrop-filter: blur(15px);
-  /* background: linear-gradient(180deg, var(--blanco-gris), rgb(242, 242, 242, 0.1)); */
 }
 
 /*/////////////     Tarjetas */
@@ -280,7 +291,12 @@ sl-card::part(base):hover {
 
 .nexos a {
   padding-bottom: .35rem;
-  border-bottom: 1px solid var(--blanco-gris) ;
+  /* border-bottom: 1px solid var(--blanco-gris); */
+}
+
+.nexos img {
+  height: 3.5vh;
+  width: auto;
 }
 
 section#bienvenidx {

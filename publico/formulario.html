@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <title>Asistencia virtual</title>
   <link rel="stylesheet" href="/style.css" />
+  
+  <!-- Favicon -->
+  <link id="favicon" rel="icon" href="./assets/img/favicon.png" type="image/x-icon" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +20,8 @@
   <!-- Shoelace -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
 
-  <link id="favicon" rel="icon" href="./assets/img/favicon.png" type="image/x-icon" />
+  <!-- Animate CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
 </head>
 <body>
@@ -35,7 +39,10 @@
     <!-- Inicia el Formulario -->
     <form class="input-validation-required" id="formulario">
       <div class="pasos">
-        <sl-tag variant="primary" size="small">Primero</sl-tag>
+        <div>
+          <sl-tag variant="primary" size="small">1°</sl-tag>
+          <sl-tag variant="primary" size="small">Paso</sl-tag>
+        </div>
         <p>Rellená con tus datos <span>*</span></p>
       </div>
       <div class="field-form">
@@ -45,7 +52,10 @@
 
       <div class="apertura-form">
       <div class="pasos">
-        <sl-tag variant="primary" size="small">Segundo</sl-tag>
+        <div>
+          <sl-tag variant="primary" size="small">2°</sl-tag>
+          <sl-tag variant="primary" size="small">Paso</sl-tag>
+        </div>
         <p>Completá el formulario <span>*</span></p>
       </div>
         <h4>Seleccioná el servicio</h4>
@@ -87,15 +97,21 @@
           </sl-button>
         </div>
 
+        
+        <div id="scroll-ventana"></div>
         <!-- Sección Desarrollo / Rediseño -->
         <div id="seccion-desarrollo-rediseño" style="display:none;">
           <h3>Información sobre tu proyecto</h3>
-          <label>¿Cuál es el objetivo principal de tu sitio web? Por ejemplo: vender productos, recibir consultas, mostrar tu trabajo, agendar turnos, informar sobre tu emprendimiento, etc.</label><br/>
-          <sl-textarea id="objetivo"></sl-textarea><br/><br/>
-          <label>¿Qué secciones o funciones te gustaría que tenga tu sitio? Ejemplos: blog, formulario de contacto, tienda online (para productos físicos o digitales), área de usuarios, agenda de turnos, etc.</label><br/>
-          <sl-textarea id="funcionalidades"></sl-textarea><br/><br/>
-          <div class="label-drop">
-            <label>¿Ya tenés un diseño pensado para tu sitio? (Puede ser un boceto en Figma, Canva, PDF, o cualquier otra herramienta. Si no tenés, ¡no hay problema!)</label><br/>
+          <div class="campo-label-text">
+            <label><span>¿Cuál es el objetivo principal de tu sitio web?</span><br>Por ejemplo: vender productos, recibir consultas, mostrar tu trabajo, agendar turnos, informar sobre tu emprendimiento, etc.</label>
+            <sl-textarea id="objetivo"></sl-textarea>
+          </div>
+          <div class="campo-label-text">
+            <label><span>¿Qué secciones o funciones te gustaría que tenga tu sitio?</span><br>Ejemplos: blog, formulario de contacto, tienda online (para productos físicos o digitales), área de usuarios, agenda de turnos, etc.</label>
+            <sl-textarea id="funcionalidades"></sl-textarea>
+          </div>
+          <div class="label-drop campo-label-text">
+            <label><span>¿Ya tenés un diseño pensado para tu sitio?</span><br>(Puede ser un boceto en Figma, Canva, PDF, o cualquier otra herramienta. Si no tenés, ¡no hay problema!)</label><br/>
             <sl-select id="tieneDiseno">
               <sl-option value="">Selecciona...</sl-option>
               <sl-option value="si">Sí</sl-option>
@@ -186,11 +202,26 @@
 
     </form>
 
-    <div id="resumen" style="display:none; background:#f9f9f9; padding:15px; border-radius:8px;"></div>
-      <sl-button type="button" onclick="mostrarResumen()">¡Mira tu resumen!</sl-button>
-      <sl-button type="submit" onclick="enviarDatos()">Enviar</sl-button>
-      <sl-button type="button" onclick="descargarPDF()">¡Descargar tu resumen!</sl-button>
+    <div id="botones-operaciones">
+      <div>
+        <sl-tooltip content="¡Mira tu resumen!" style="--sl-tooltip-arrow-size: 0;">
+          <sl-button class="btn-enviar" type="button" onclick="mostrarResumen()">
+            <sl-icon slot="prefix" name="search"></sl-icon>
+          </sl-button>
+        </sl-tooltip>
+        <sl-tooltip content="¡Descargar tu resumen!" style="--sl-tooltip-arrow-size: 0;">
+          <sl-button class="btn-enviar" type="button" onclick="descargarPDF()">
+            <sl-icon slot="prefix" name="file-earmark-arrow-down"></sl-icon>
+          </sl-button>
+        </sl-tooltip>
+      </div>
+      <!-- Boton de Enviar -->
+      <sl-button id="btnEnviar" class="btn-generico btn-enviar" type="submit">
+        <sl-icon slot="suffix" name="arrow-right-square"></sl-icon>
+        Enviar
+      </sl-button>
     </div>
+    <div id="resumen"></div>
 
 
     
@@ -338,14 +369,9 @@
 
 
 
-<sl-alert id="alert-empresa" variant="warning" closable duration="3000">
-  <sl-icon slot="icon" name="info-circle"></sl-icon>
-  ⚠️ Por favor, ingresa el nombre del proyecto o empresa.
-</sl-alert>
-
   
   <script type="module">
-    const form = document.querysl-selector('.input-validation-required');
+    const form = document.querySelector('.input-validation-required');
     
     await Promise.all([
       customElements.whenDefined('sl-button'),
@@ -360,6 +386,8 @@
         alert('Todos los campos son válidos!');
       });
     });
+
+    console.log(form);
   </script>
 
   <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"></script>

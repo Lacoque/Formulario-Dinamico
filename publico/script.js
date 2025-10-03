@@ -1,34 +1,3 @@
-// document.getElementById("tipoServicio").addEventListener("sl-change", function (event) {
-//   const tipo = event.target.value;
-
-//const { set } = require("mongoose");
-
-//   document.getElementById("seccion-desarrollo-rediseño").style.display = "none";
-//   document.getElementById("seccion-rediseño-seo").style.display = "none";
-//   document.getElementById("seccion-productos-dominio").style.display = "none";
-//   document.getElementById("seccion-tienda").style.display = "none";
-//   document.getElementById("funcionalidades").style.display = "none";
-
-//   if (tipo === "desarrollo" || tipo === "rediseño") {
-//     document.getElementById("seccion-desarrollo-rediseño").style.display = "block";
-//     document.getElementById("seccion-tienda").style.display = "block";
-//     document.getElementById("seccion-productos-dominio").style.display = "block";
-//   }
-
-//   if (tipo === "rediseño" || tipo === "seo") {
-//     document.getElementById("seccion-rediseño-seo").style.display = "block";
-//   }
-
-//   if (tipo === "funcionalidades") {
-//     document.getElementById("seccion-productos-dominio").style.display = "block";
-//     document.getElementById("seccion-tienda").style.display = "block";
-//     document.getElementById("seccion-funcionalidades").style.display = "block";
-//   }
-// });
-
-
-
-
 
 document.querySelectorAll(".card-opcion").forEach(card => {
   card.addEventListener("click", function () {
@@ -56,6 +25,12 @@ document.querySelectorAll(".card-opcion").forEach(card => {
       document.getElementById("seccion-productos-dominio").style.display = "block";
       document.getElementById("seccion-tienda").style.display = "block";
       document.getElementById("seccion-funcionalidades").style.display = "block";
+    }
+
+
+    if (tipo === "rediseño" || tipo === "seo" || tipo==="funcionalidades" || tipo==="desarrollo") {
+      const ventana = document.getElementById("scroll-ventana");
+      ventana.scrollIntoView({ behavior: "smooth", top: "2rem" });
     }
 
 
@@ -171,13 +146,13 @@ function mostrarResumen() {
 
   const filas = campos.map(campo => `
     <tr>
-      <td style="font-weight:bold; padding:5px;">${campo.label}</td>
-      <td style="padding:5px;">${campo.value}</td>
+      <td>${campo.label}</td>
+      <td>${campo.value}</td>
     </tr>
   `).join("");
 
   const contenido = `
-    <h3>📄 Informacion que estas por enviar al equipo de CX</h3>
+    <h5>Información que estas por enviar al equipo de Contenidx</h5>
     <table style="width:100%; border-collapse: collapse;">
       ${filas}
     </table>
@@ -185,10 +160,6 @@ function mostrarResumen() {
 
   contenedor.innerHTML = contenido;
   contenedor.style.display = "block";
-  contenedor.style.border = "2px solid #007bff";
-  setTimeout(() => {
-    contenedor.style.border = "none";
-  }, 1000);
 }
 
 
@@ -277,6 +248,30 @@ async function descargarPDF() {
 
   doc.save("formulario_contenidx.pdf");
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  
+  const btnEnviar = document.getElementById('btnEnviar');
+
+  btnEnviar.addEventListener('click', async () => {
+    btnEnviar.innerHTML = '<sl-spinner></sl-spinner>';
+    btnEnviar.disabled = true;
+    
+    const camposExito = await enviarDatos();
+    
+    btnEnviar.innerHTML = '<sl-icon slot="suffix" name="arrow-right-square"></sl-icon> Enviar';
+    btnEnviar.disabled = false;
+
+    if (camposExito){
+      setTimeout(() => {
+        location.reload();
+        window.scrollTo(0, 0);
+      }, 1500 );
+    }
+  });
+});
+
+
 async function enviarDatos() {
   const nombreEmpresa = document.getElementById("nombreEmpresa").value.trim();
   const correo = document.getElementById("correo").value.trim();
@@ -284,22 +279,22 @@ async function enviarDatos() {
 
   if (!nombreEmpresa) {
     mostrarAlerta("⚠️ Por favor, ingresa el nombre del proyecto o empresa.")
-    return;
+    return false;
   }
 
   if (!correo) {
     mostrarAlerta("⚠️ El correo electrónico es obligatorio.");
-    return;
+    return false;
   }
 
   if (!isValidEmail(correo)) {
     mostrarAlerta("⚠️ Por favor, ingresa un correo electrónico válido.");
-    return;
+    return false;
   }
 
   if (!tipoServicio) {
     mostrarAlerta("⚠️ Por favor, selecciona un tipo de servicio.");
-    return;
+    return false;
   }
 
   const data = {
@@ -335,45 +330,42 @@ async function enviarDatos() {
     });
 
     if (response.ok) {
-      mostrarAlertaExito("✅ ¡Gracias! Tu información ha sido enviada.")
-      // alert("✅ ¡Gracias! Tu información ha sido enviada.");
+      mostrarAlertaExito("✅ ¡Gracias! Tu información ha sido enviada.");
+    return true;
     } else {
       mostrarAlerta("❌ Hubo un error al enviar tu formulario.");
-      // alert("❌ Hubo un error al enviar tu formulario.");
+    return false;
     }
   } catch (error) {
     console.error("❌ Error de conexión:", error);
     mostrarAlerta("❌ No se pudo conectar con el servidor.");
     // alert("❌ No se pudo conectar con el servidor.");
+    return false;
   }
 }
 
-if (response.ok) {
-  mostrarAlertaExito("✅ ¡Gracias! Tu información ha sido enviada.");
-} else {
-  mostrarAlerta("❌ Hubo un error al enviar tu formulario.");
-}
 
 
-
-function mostrarAlerta(mensaje, tipo = 'warning') {
+async function mostrarAlerta(mensaje, tipo = 'warning') {
   const alert = document.createElement('sl-alert');
   alert.variant = tipo;
   alert.closable = true;
   alert.duration = 3000;
   alert.innerHTML = mensaje;
   document.body.appendChild(alert);
+  await customElements.whenDefined('sl-alert');
   alert.show();
   alert.toast();
 }
 
-function mostrarAlertaExito(mensaje, tipo = 'success') {
+async function mostrarAlertaExito(mensaje, tipo = 'success') {
   const alert = document.createElement('sl-alert');
   alert.variant = tipo;
   alert.closable = true;
   alert.duration = 3000;
   alert.innerHTML = mensaje;
   document.body.appendChild(alert);
+  await customElements.whenDefined('sl-alert');
   alert.show();
   alert.toast();
 }

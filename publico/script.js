@@ -274,13 +274,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function enviarDatos() {
   const nombreEmpresa = document.getElementById("nombreEmpresa").value.trim();
+  // Aunque se repite el selector dejarlo así hasta optimizar
+  const inputEmpresa = document.getElementById("nombreEmpresa");
   const correo = document.getElementById("correo").value.trim();
   const tipoServicio = document.getElementById("tipoServicio").value.trim();
 
   if (!nombreEmpresa) {
-    mostrarAlerta("⚠️ Por favor, ingresa el nombre del proyecto o empresa.")
+    mostrarAlerta("⚠️ Por favor, ingresa el nombre del proyecto o empresa.");
+    // Se agraga clase de identificación de campo
+    inputEmpresa.classList.add('acento');
+    setTimeout(() => {
+      window.scrollTo(0, 0);  
+    }, 900 );
+    
+    // Se elimina la clase .acento al hacer focus o escribir en el campo
+    const inputInterno = inputEmpresa.shadowRoot.querySelector('input');
+    const slInput = document.getElementById("nombreEmpresa");
+    inputInterno.addEventListener('input', function () {
+      slInput.classList.remove('acento');
+    });
+    inputInterno.addEventListener('focus', function () {
+      slInput.classList.remove('acento');
+    });
+    
     return false;
   }
+
+
+
+
 
   if (!correo) {
     mostrarAlerta("⚠️ El correo electrónico es obligatorio.");

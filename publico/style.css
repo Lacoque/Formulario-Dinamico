@@ -350,7 +350,7 @@ section#bienvenidx > div {
   align-items: center;
   justify-content: end;
   gap: 1rem;
-  margin: 1rem 0rem;
+  margin: 1rem 0rem 4rem;
   padding: 1rem 2rem;
 }
 
@@ -383,6 +383,15 @@ section#bienvenidx > div {
 #resumen td {
   padding: 5px 0px;
 }
+
+sl-input.acento::part(input) {
+  background-color: rgba(17, 114, 168, 0.35);
+}
+/* sl-input.acento::part(input):focus {
+  background-color: transparent;
+} */
+
+
 
 
 

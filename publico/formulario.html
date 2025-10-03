@@ -27,11 +27,11 @@
 <body>
   <div class="container">
     <div class="botones-iniciales">
-      <sl-button onclick="window.history.back()">
+      <sl-button type="button" size="small" onclick="window.history.back()">
         <sl-icon slot="prefix" name="arrow-return-left"></sl-icon>
         Volver
       </sl-button>
-      <sl-button type="button" onclick="location.reload()">
+      <sl-button type="button" size="small" onclick="location.reload()">
         <sl-icon slot="prefix" name="arrow-counterclockwise"></sl-icon>
       </sl-button>
     </div>
@@ -45,9 +45,9 @@
         </div>
         <p>Rellená con tus datos <span>*</span></p>
       </div>
-      <div class="field-form">
-        <sl-input class="input-form" name="name" placeholder="Nombre de empresa / organización" aria-placeholder="Nombre de empresa" type="text" id="nombreEmpresa" required><sl-icon slot="prefix" name="file-person"></sl-icon></sl-input>
-        <sl-input class="input-form" name="email" placeholder="Correo electrónico" aria-placeholder="Correo electrónico" type="email" id="correo" required><sl-icon slot="prefix" name="envelope"></sl-icon></sl-input>
+      <div class="field-form" id="field-form">
+        <sl-input class="input-form" name="name" placeholder="Nombre de empresa / organización" aria-placeholder="Nombre de empresa" type="text" id="nombreEmpresa" required clearable><sl-icon slot="prefix" name="file-person"></sl-icon></sl-input>
+        <sl-input class="input-form" name="email" placeholder="Correo electrónico" aria-placeholder="Correo electrónico" type="email" id="correo" required clearable><sl-icon slot="prefix" name="envelope"></sl-icon></sl-input>
       </div>
 
       <div class="apertura-form">
@@ -205,18 +205,18 @@
     <div id="botones-operaciones">
       <div>
         <sl-tooltip content="¡Mira tu resumen!" style="--sl-tooltip-arrow-size: 0;">
-          <sl-button class="btn-enviar" type="button" onclick="mostrarResumen()">
+          <sl-button class="btn-enviar" type="button" size="large" onclick="mostrarResumen()">
             <sl-icon slot="prefix" name="search"></sl-icon>
           </sl-button>
         </sl-tooltip>
         <sl-tooltip content="¡Descargar tu resumen!" style="--sl-tooltip-arrow-size: 0;">
-          <sl-button class="btn-enviar" type="button" onclick="descargarPDF()">
+          <sl-button class="btn-enviar" type="button" size="large" onclick="descargarPDF()">
             <sl-icon slot="prefix" name="file-earmark-arrow-down"></sl-icon>
           </sl-button>
         </sl-tooltip>
       </div>
       <!-- Boton de Enviar -->
-      <sl-button id="btnEnviar" class="btn-generico btn-enviar" type="submit">
+      <sl-button id="btnEnviar" class="btn-generico btn-enviar" type="submit" size="large">
         <sl-icon slot="suffix" name="arrow-right-square"></sl-icon>
         Enviar
       </sl-button>

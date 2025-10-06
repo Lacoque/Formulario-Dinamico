@@ -17,6 +17,9 @@
     <!-- Shoelace -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
 
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
     <link id="favicon" rel="icon" href="./assets/img/favicon.png" type="image/x-icon" />
 
 
@@ -29,23 +32,30 @@
                     Requerimientos de proyecto
                 </sl-badge> -->
                 <sl-tag variant="neutral" size="small">
-                    Requerimientos de proyecto
+                    Primer paso para tu nuevo proyecto
                 </sl-tag>
-                <h2>Bienvenidx</h2>
+                <div class="saludo">
+                    <h2>¡Hola! Bienvenidx</h2>
+                    <!-- <img src="./assets/img/1f31e_color.png" alt="Sol de bienvenida"> -->
+                </div>
                 <div class="texto">
                     <div>
-                        <p>El siguiente formulario nos permite conocer los aspectos claves de lo que necesitas, para diseñar una solución precisa y alineada con tus objetivos.</p>
-                        <p>Tu tiempo vale, y queremos aprovecharlo al máximo. Completá los campos con tranquilidad: estamos para ayudarte a avanzar con foco, estrategia y creatividad.</p>
+                        <p><span>Este es un paso importante, gracias por darlo de la mano de Contenidx.</span></p>
+                        <p>Como no hemos conversado aún, el siguiente formulario nos permite ir al punto: entender a fondo tus necesidades para poder diseñar una solución precisa desde el arranque.</p>
                     </div>
                     <div>
-                        <p>No hay opción correcta. Mientras lo que completás estás armando un camino claro para que te podamos acompañar y cumplir con los requerimientos.</p>
+                        <p>Recordá que no hay respuestas incorrectas, solo información que nos ayuda a trazar tu camino. Una vez que lo envíes, revisaremos las respuestas y te contactaremos en un máximo de un (1) día hábil con los siguientes pasos a seguir.</p>
+                        <div>
+                            <sl-icon slot="prefix" size="large" name="hourglass-bottom"></sl-icon>
+                            <p>Tu tiempo es valioso. Completar este formulario te tomará entre <span>5 y 7 minutos</span>.</p>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="bienvenida-accion">
-                <sl-button class="btn-generico btn-enviar" href="./formulario.html">
-                    <sl-icon slot="suffix" name="arrow-right"></sl-icon>
-                    Iniciar
+                <sl-button class="btn-generico btn-enviar" href="./formulario.html" size="large">
+                    <sl-icon slot="prefix" name="clipboard-check"></sl-icon>
+                    Iniciar mi Proyecto
                 </sl-button>
             </div>
             <div class="nexos">

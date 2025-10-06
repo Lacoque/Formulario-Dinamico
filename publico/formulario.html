@@ -101,7 +101,8 @@
         <div id="scroll-ventana"></div>
         <!-- Sección Desarrollo / Rediseño -->
         <div id="seccion-desarrollo-rediseño" style="display:none;">
-          <h3>Información sobre tu proyecto</h3>
+          <h5>Información sobre tu proyecto</h5>
+          <!-- <h3>Información sobre tu proyecto</h3> -->
           <div class="campo-label-text">
             <label><span>¿Cuál es el objetivo principal de tu sitio web?</span><br>Por ejemplo: vender productos, recibir consultas, mostrar tu trabajo, agendar turnos, informar sobre tu emprendimiento, etc.</label>
             <sl-textarea id="objetivo"></sl-textarea>
@@ -110,13 +111,13 @@
             <label><span>¿Qué secciones o funciones te gustaría que tenga tu sitio?</span><br>Ejemplos: blog, formulario de contacto, tienda online (para productos físicos o digitales), área de usuarios, agenda de turnos, etc.</label>
             <sl-textarea id="funcionalidades"></sl-textarea>
           </div>
-          <div class="label-drop campo-label-text">
-            <label><span>¿Ya tenés un diseño pensado para tu sitio?</span><br>(Puede ser un boceto en Figma, Canva, PDF, o cualquier otra herramienta. Si no tenés, ¡no hay problema!)</label><br/>
+          <div class="campo-label-text">
+            <label><span>¿Ya tenés un diseño pensado para tu sitio?</span><br>(Puede ser un boceto en Figma, Canva, PDF, o cualquier otra herramienta. Si no tenés, ¡no hay problema!)</label>
             <sl-select id="tieneDiseno">
               <sl-option value="">Selecciona...</sl-option>
               <sl-option value="si">Sí</sl-option>
               <sl-option value="no">No</sl-option>
-            </sl-select><br/><br/>
+            </sl-select>
           </div>
           <div id="diseno-no" style="display:none;">
             <label>¿Hay páginas web, diseños o estilos que te gusten y sirvan de inspiración? Esto nos ayuda a entender mejor tu gusto y estilo. ¡Podés compartir links, imágenes o descripciones!</label><br/>
@@ -153,36 +154,42 @@
         </div>
 
         <div id="seccion-tienda" style="display:none;">
-          <h3>Si tu sitio es una tienda online...</h3>
-          <label>¿Vas a vender productos físicos o digitales?
-            (Por ejemplo: ropa, cursos, descargas, obras, etc.)</label><br/>
-          <sl-textarea id="infoProductos"></sl-textarea><br/><br/>
-          <label>¿A qué correo querés que lleguen las notificaciones de compra?
-            (Es el mail donde vas a recibir los avisos cuando alguien te compre algo)</label><br/>
-          <sl-input type="email" id="correoVentas"/><br/><br/>
-          <label>¿Qué medios de pago querés ofrecer en tu tienda?
-            Ej: Mercado Pago, Transferencia bancaria, Efectivo, PayPal, etc.</label><br/>
-          <sl-textarea id="mediosPago"></sl-textarea><br/><br/>
-          <label>¿Usás algún sistema de facturación?
-            (Por ejemplo: Facturante, Factura A desde AFIP, TiendaNube, otro sistema o aún no)</label><br/>
-          <sl-input type="text" id="sistemaFacturacion"/><br/><br/>
-          <label>¿Tenés la información de tus productos lista para cargar?
-            Podés compartirnos un archivo o carpeta con:
+            <h5>Si tu sitio es una tienda online...</h5>
             
-            Título del producto;
+            <div class="campo-label-text">
+              <label><span>¿Vas a vender productos físicos o digitales?</span><br>
+                (Por ejemplo: ropa, cursos, descargas, obras, etc.)</label>
+                <sl-textarea id="infoProductos"></sl-textarea>
+            </div>
+
+            <div class="campo-label-text">
+              <label><span>¿A qué correo querés que lleguen las notificaciones de compra?</span><br>
+                (Es el mail donde vas a recibir los avisos cuando alguien te compre algo)</label>
+                <sl-input type="email" id="correoVentas"/>
+            </div>
+
+            <div class="campo-label-text">
+              <label><span>¿Qué medios de pago querés ofrecer en tu tienda?</span><br>
+                Ej: Mercado Pago, Transferencia bancaria, Efectivo, PayPal, etc.</label>
+                <sl-textarea id="mediosPago"></sl-textarea>
+            </div>
             
-            Descripción completa;
-            
-            Precio;
-            
-            Peso y dimensiones de la caja de envío (si aplica);
-            
-            Imágenes</label><br/>
-          <sl-input type="url" id="linkProductos"/><br/><br/>
+            <div class="campo-label-text">
+              <label><span>¿Usás algún sistema de facturación?</span><br>
+                (Por ejemplo: Facturante, Factura A desde AFIP, TiendaNube, otro sistema o aún no)</label>
+                <sl-input type="text" id="sistemaFacturacion"/>
+            </div>
+
+            <div class="campo-label-text">
+              <label><span>¿Tenés la información de tus productos lista para cargar?</span><br>
+                Podés compartirnos un archivo o carpeta con: Título del producto; Descripción completa; Precio; Imágenes; Peso y dimensiones de la caja de envío (si aplica).</label>
+                <sl-input type="url" id="linkProductos"/>
+            </div>
+
         </div>
 
         <div id="seccion-productos-dominio" style="display:none;">
-          <h3>Datos del sitio actual</h3>
+          <h5>Datos del sitio actual</h5>
           <label> ¿Ya tenés una web publicada o un dominio comprado?</label><br/>
           <sl-select id="tieneSitio">
             <sl-option value="">Selecciona...</sl-option>

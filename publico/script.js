@@ -28,13 +28,23 @@ document.querySelectorAll(".card-opcion").forEach(card => {
     }
 
 
-    if (tipo === "rediseño" || tipo === "seo" || tipo==="funcionalidades" || tipo==="desarrollo") {
-      const ventana = document.getElementById("scroll-ventana");
-      ventana.scrollIntoView({ behavior: "smooth", top: "2rem" });
+    function scrollToOffset(selector, offset = 0, behavior = "smooth") {
+      const elemento = document.querySelector(selector);
+      if (!elemento) return;
+      const y = elemento.getBoundingClientRect().top + window.pageYOffset + offset;
+      window.scrollTo({ top: y, behavior });
     }
 
+    if (["rediseño", "seo", "funcionalidades", "desarrollo"].includes(tipo)) {
+      scrollToOffset("#scroll-ventana", -60);
+    }
 
+    // Actualización del estado de tipo de servicio seleccionado. Eso se suministra a mostrarResumen
+    // console.log("Tipo seleccionado:", tipo); // Para depuración
+    document.getElementById("tipoServicio").value = tipo;
   });
+
+
 
   card.addEventListener('click', () => {
     document.querySelectorAll('.card-opcion').forEach(c => c.classList.remove('activo'));
@@ -65,12 +75,12 @@ document.querySelectorAll(".card-opcion").forEach(card => {
 
 
 
-document.getElementById("tieneDiseno").addEventListener("change", function () {
+document.getElementById("tieneDiseno").addEventListener("sl-change", function () {
   const disenoNo = document.getElementById("diseno-no");
   disenoNo.style.display = this.value === "no" ? "block" : "none";
 });
 
-document.getElementById("tieneSitio").addEventListener("change", function () {
+document.getElementById("tieneSitio").addEventListener("sl-change", function () {
   const sitioLink = document.getElementById("sitio-link");
   sitioLink.style.display = this.value === "si" ? "block" : "none";
 });

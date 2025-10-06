@@ -195,11 +195,6 @@ sl-input::part(base) {
   margin-top: 2rem;
 }
 
-.label-drop {
-  display: block;
-  /* gap: 1rem; */
-  align-items: center;
-}
 
 div.botones-iniciales {
   position: sticky;
@@ -218,7 +213,14 @@ div.botones-iniciales {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  margin-top: 2rem;
 }
+
+.campo-label-text label,
+.campo-label-text span {
+  color: var(--negro-texto);
+}
+
 
 .campo-label-text span {
   font-weight: 400;
@@ -290,6 +292,22 @@ sl-card::part(base):hover {
 
 /*/////////////     Mensaje de Bienvenida */
 
+.saludo {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 2rem;
+}
+.saludo img {
+  height: 10vh;
+  width: auto;
+}
+
+.mensaje-inicio {
+  animation: fadeIn;
+  animation-duration: 1s;
+}
+
 .mensaje-inicio h2 {
   margin: 1rem .3rem .3rem;
   color: var(--blanco-gris);
@@ -308,10 +326,42 @@ sl-card::part(base):hover {
   flex: 1;
 }
 
+.texto div > div:last-child {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0rem;
+}
+
 .texto p,
 .texto h2 {
   color: var(--blanco-gris);
 }
+
+.texto span {
+  font-weight: 700;
+  text-align: center;
+}
+
+.texto div div sl-icon {
+  padding-right: .5rem;
+  font-size: 2rem;
+  color: var(--blanco-gris);
+}
+
+.texto div div {
+  display: flex;
+  align-items: center;
+  padding: .3rem 1rem;
+  border-radius: 5px;
+  border: 1px solid rgb(197, 197, 197, 0.8);
+}
+
+.texto p:nth-child(1) > span {
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+}
+
 
 .nexos a,
 .nexos p {
@@ -339,9 +389,13 @@ section#bienvenidx > div {
   background-color: rgb(204, 204, 204, 0.35);
   border-radius: 10px;
   padding: 3rem;
+
+  animation: fadeIn;
+  animation-duration: 1s;
 }
 
 .bienvenida-accion {
+  margin-top: 2rem;
   text-align: end;
 }
 
@@ -387,10 +441,6 @@ section#bienvenidx > div {
 sl-input.acento::part(input) {
   background-color: rgba(17, 114, 168, 0.35);
 }
-/* sl-input.acento::part(input):focus {
-  background-color: transparent;
-} */
-
 
 
 
@@ -418,4 +468,16 @@ sl-input.acento::part(input) {
 #seccion-tienda h3,
 #seccion-productos-dominio h3 {
   margin: .5rem 0rem 1rem;
+}
+
+#seccion-desarrollo-rediseño h5,
+#seccion-rediseño-seo h5,
+#seccion-funcionalidades h5,
+#seccion-tienda h5,
+#seccion-productos-dominio h5 {
+  font-weight: 300;
+  letter-spacing: -1px;
+  margin: .5rem 0rem 1rem;
+  text-transform: uppercase;
+  color: var(--turquesa);
 }

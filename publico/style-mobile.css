@@ -1,0 +1,14 @@
+@media screen and (max-width: 768px) {
+  .texto div > div:last-child {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  section#bienvenidx {
+    padding: 1rem;
+  }
+
+
+}
+
+

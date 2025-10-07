@@ -3,8 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
   <title>Asistencia virtual</title>
   <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="style-mobile.css">
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Formulario para recopilar información clave sobre tu proyecto web. Ayudanos a entender tus necesidades para ofrecerte la mejor solución." />
+  <meta name="keywords" content="Formulario, Proyecto web, Desarrollo web, Rediseño web, SEO, Funcionalidades web, Tienda online, Hosting, Dominio" />
+  <meta name="author" content="Contenidx - https://www.contenidx.com.ar" />
+  <meta name="robots" content="index, follow" />
   
   <!-- Favicon -->
   <link id="favicon" rel="icon" href="./assets/img/favicon.png" type="image/x-icon" />
@@ -32,9 +40,11 @@
         <sl-icon slot="prefix" name="arrow-return-left"></sl-icon>
         Volver
       </sl-button>
-      <sl-button type="button" size="small" onclick="location.reload()">
-        <sl-icon slot="prefix" name="arrow-counterclockwise"></sl-icon>
-      </sl-button>
+      <sl-tooltip content="Recargá el formulario" placement="left">
+        <sl-button type="button" size="small" onclick="location.reload()">
+          <sl-icon slot="prefix" name="arrow-counterclockwise"></sl-icon>
+        </sl-button>
+      </sl-tooltip>
     </div>
 
     <!-- Inicia el Formulario -->
@@ -212,16 +222,18 @@
 
     <div id="botones-operaciones">
       <div>
-        <sl-tooltip content="¡Mira tu resumen!" style="--sl-tooltip-arrow-size: 0;">
-          <sl-button class="btn-enviar" type="button" size="large" onclick="mostrarResumen()">
-            <sl-icon slot="prefix" name="search"></sl-icon>
-          </sl-button>
-        </sl-tooltip>
-        <sl-tooltip content="¡Descargar tu resumen!" style="--sl-tooltip-arrow-size: 0;">
-          <sl-button class="btn-enviar" type="button" size="large" onclick="descargarPDF()">
-            <sl-icon slot="prefix" name="file-earmark-arrow-down"></sl-icon>
-          </sl-button>
-        </sl-tooltip>
+        <sl-button-group label="Operaciones">
+          <sl-tooltip content="¡Mira tu resumen!" style="--sl-tooltip-arrow-size: 0;">
+            <sl-button class="btn-enviar" type="button" size="large" onclick="mostrarResumen()">
+              <sl-icon slot="prefix" name="search"></sl-icon>
+            </sl-button>
+          </sl-tooltip>
+          <sl-tooltip content="¡Descargar tu resumen!" style="--sl-tooltip-arrow-size: 0;">
+            <sl-button class="btn-enviar" type="button" size="large" onclick="descargarPDF()">
+              <sl-icon slot="prefix" name="file-earmark-arrow-down"></sl-icon>
+            </sl-button>
+          </sl-tooltip>
+        </sl-button-group>
       </div>
       <!-- Boton de Enviar -->
       <sl-button id="btnEnviar" class="btn-generico btn-enviar" type="submit" size="large">

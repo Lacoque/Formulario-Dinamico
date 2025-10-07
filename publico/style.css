@@ -21,32 +21,32 @@ body::-webkit-input-placeholder {
 }
 
 h2 {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 600;
   letter-spacing: -2px;
 }
 
 h3 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 500;
   letter-spacing: -2px;
 }
 
 h4 {
-  font-size: 2.35rem;
+  font-size: 1.5rem;
   font-weight: 500;
-  letter-spacing: -2px;
+  letter-spacing: -1px;
 }
 
 h5 {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: -1px;
   margin: .5rem 0rem;
 }
 
 p {
-  font-size: 1rem;
+  font-size: small;
   color: var(--negro-texto);
   line-height: 1.45;
 }
@@ -63,7 +63,7 @@ h1, h2, h3, h4, h5, h6, p {
   --turquesa-oscuro-select: #093e5a;
   --rojo: #C11718;
   --negro: #2D2D2D;
-  --negro-texto: #444444;
+  --negro-texto: rgb(68, 68, 68);
   --gris-sutil: #c5c5c5;
   --degr-turquesa-oscuro: linear-gradient(90deg, #1584C2 0%, #0A3F5C 100%);
   --degr-negro: linear-gradient(90deg, #2D2D2D 0%, #0A3F5C 100%);
@@ -319,7 +319,7 @@ sl-card::part(base):hover {
 
 .texto {
   display: flex;
-  gap: 3rem;
+  flex-direction: column;
 }
 
 .texto div {
@@ -327,8 +327,8 @@ sl-card::part(base):hover {
 }
 
 .texto div > div:last-child {
+  width: fit-content;
   display: flex;
-  gap: 1rem;
   margin: 1rem 0rem;
 }
 
@@ -338,13 +338,13 @@ sl-card::part(base):hover {
 }
 
 .texto span {
-  font-weight: 700;
+  font-weight: 500;
   text-align: center;
 }
 
 .texto div div sl-icon {
   padding-right: .5rem;
-  font-size: 2rem;
+  font-size: large;
   color: var(--blanco-gris);
 }
 
@@ -362,6 +362,12 @@ sl-card::part(base):hover {
   line-height: 1.25rem;
 }
 
+.nexos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+}
 
 .nexos a,
 .nexos p {
@@ -370,8 +376,8 @@ sl-card::part(base):hover {
 }
 
 .nexos a {
-  padding-bottom: .35rem;
-  /* border-bottom: 1px solid var(--blanco-gris); */
+  display: flex;
+  justify-content: center;
 }
 
 .nexos img {
@@ -379,16 +385,26 @@ sl-card::part(base):hover {
   width: auto;
 }
 
+.nexos sl-tag::part(base) {
+  background-color: transparent;
+  /* background-color: rgba(255, 255, 255, 0.35); */
+  color: var(--blanco-gris);
+  font-weight: 400;
+}
+
 section#bienvenidx {
+  display: flex;
+  justify-content: center;
   padding: 6rem;
-  height: 100vh;
-  background: url('assets/img/fondo-form-dinamico.png') no-repeat center center fixed;
+  background: url('assets/img/fondo-form-dinamico.png') no-repeat fixed;
+  background-size: cover;
 }
 
 section#bienvenidx > div {
-  background-color: rgb(204, 204, 204, 0.35);
-  border-radius: 10px;
+  width: clamp(200px, 60%, 90vw);
   padding: 3rem;
+  border-radius: 10px;
+  background-color: rgb(204, 204, 204, 0.35);
 
   animation: fadeIn;
   animation-duration: 1s;

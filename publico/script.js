@@ -177,6 +177,20 @@ async function descargarPDF() {
   const { jsPDF } = window.jspdf; 
   const doc = new jsPDF();
 
+
+  // Icorporar membrete
+  const cargaMembrete = (src) => {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => resolve(img);
+      img.onerror = () => resolve(null);
+    });
+  };
+  const membrete = await cargaMembrete('./assets/img/membrete-2.jpg');
+  doc.addImage(membrete, 'JPEG', 0, 0, 210, 27);
+
+
   // Obtener valores actuales del formulario para el pdf de descarga
   const nombreEmpresa = document.getElementById("nombreEmpresa").value.trim();
   const correo = document.getElementById("correo").value.trim();
@@ -236,17 +250,23 @@ async function descargarPDF() {
   }
 
   // Crear tabla para el PDF
-  const headers = ["Campo", "Valor"];
+  const headers = ["Consulta", "Respuesta"];
   const data = campos.map(campo => [campo.label, campo.value]);
-  doc.text("Resumen del Formulario", 10, 10);
+  doc.text("Resumen del Formulario", 10, 35);
   doc.autoTable({
     head: [headers],
     body: data,
-    startY: 20,
+    startY: 40,
     theme: 'grid',
-    styles: { fontSize: 9 },
+    styles: { 
+      fontSize: 9,
+      fillColor: [240, 240, 240],
+      textColor: [ 68, 68, 68 ],
+      cellPadding: 3,
+    },
     columnStyles: {
-      0: { cellWidth: 80 }, 
+      0: { cellWidth: 80, fontStyle: 'bold' }, 
+      1: { cellWidth: 100 },
     },
   });
   const finalY = doc.lastAutoTable.finalY || 20;
@@ -254,7 +274,7 @@ async function descargarPDF() {
   doc.setFontSize(10);
   doc.text("Si crees que te falto algo podes escribirnos este mail info@contenidx.com.ar", 10, finalY + espacio);
   doc.text("Gracias <3", 10, finalY + espacio + 7); 
-  doc.text("contenidx.com.ar", 10, finalY + espacio + 14); 
+  doc.text("contenidx.com.ar", 10, finalY + espacio + 14);
 
   doc.save("formulario_contenidx.pdf");
 }

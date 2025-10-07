@@ -401,8 +401,8 @@ section#bienvenidx {
 }
 
 section#bienvenidx > div {
-  width: clamp(200px, 60%, 90vw);
-  padding: 3rem;
+  width: 60%;
+  padding: clamp(.5rem, 3rem, 6rem);
   border-radius: 10px;
   background-color: rgb(204, 204, 204, 0.35);
 

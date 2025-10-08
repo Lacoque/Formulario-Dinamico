@@ -112,8 +112,10 @@
         <div id="scroll-ventana"></div>
         <!-- Sección Desarrollo / Rediseño -->
         <div id="seccion-desarrollo-rediseño" style="display:none;">
-          <h5>Información sobre tu proyecto</h5>
-          <!-- <h3>Información sobre tu proyecto</h3> -->
+          <h5>
+            <sl-icon name="gear" slot="prefix"></sl-icon>
+            Información sobre tu proyecto
+          </h5>
           <div class="campo-label-text">
             <label><span>¿Cuál es el objetivo principal de tu sitio web?</span><br>Por ejemplo: vender productos, recibir consultas, mostrar tu trabajo, agendar turnos, informar sobre tu emprendimiento, etc.</label>
             <sl-textarea id="objetivo"></sl-textarea>
@@ -165,7 +167,10 @@
         </div>
 
         <div id="seccion-tienda" style="display:none;">
-            <h5>Si tu sitio es una tienda online...</h5>
+            <h5>
+              <sl-icon name="shop" slot="prefix"></sl-icon>
+              Si tu sitio es una tienda online...
+            </h5>
 
             <div class="campo-label-text">
               <label><span>¿Vas a vender productos físicos o digitales?</span><br>
@@ -225,12 +230,12 @@
         <sl-button-group label="Operaciones">
           <sl-tooltip content="¡Mira tu resumen!" style="--sl-tooltip-arrow-size: 0;">
             <sl-button class="btn-enviar" type="button" size="large" onclick="mostrarResumen()">
-              <sl-icon slot="prefix" name="search"></sl-icon>
+              <sl-icon slot="prefix" name="eye"></sl-icon>
             </sl-button>
           </sl-tooltip>
           <sl-tooltip content="¡Descargar tu resumen!" style="--sl-tooltip-arrow-size: 0;">
             <sl-button class="btn-enviar" type="button" size="large" onclick="descargarPDF()">
-              <sl-icon slot="prefix" name="file-earmark-arrow-down"></sl-icon>
+              <sl-icon slot="prefix" name="filetype-pdf"></sl-icon>
             </sl-button>
           </sl-tooltip>
         </sl-button-group>

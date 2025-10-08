@@ -40,11 +40,19 @@
         <sl-icon slot="prefix" name="arrow-return-left"></sl-icon>
         Volver
       </sl-button>
-      <sl-tooltip content="Recargá el formulario" placement="left">
-        <sl-button type="button" size="small" onclick="location.reload()">
-          <sl-icon slot="prefix" name="arrow-counterclockwise"></sl-icon>
-        </sl-button>
-      </sl-tooltip>
+
+      <sl-button-group label="Navegacion">
+          <sl-tooltip content="Ir arriba" placement="top">
+            <sl-button type="button" size="small" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">
+              <sl-icon slot="prefix" name="arrow-up-square"></sl-icon>
+            </sl-button>
+          </sl-tooltip>
+          <sl-tooltip content="Limpiar formulario" placement="top">
+            <sl-button type="button" size="small" onclick="location.reload()">
+              <sl-icon slot="prefix" name="trash3"></sl-icon>
+            </sl-button>
+          </sl-tooltip>
+        </sl-button-group>
     </div>
 
     <!-- Inicia el Formulario -->
@@ -132,38 +140,54 @@
               <sl-option value="no">No</sl-option>
             </sl-select>
           </div>
+          
           <div id="diseno-no" style="display:none;">
-            <label>¿Hay páginas web, diseños o estilos que te gusten y sirvan de inspiración? Esto nos ayuda a entender mejor tu gusto y estilo. ¡Podés compartir links, imágenes o descripciones!</label><br/>
-            <sl-textarea id="referenciasDiseno"></sl-textarea><br/><br/>
-            <label>¿Contás con un manual de marca o algún material gráfico que debamos respetar? Ej: logo, paleta de colores, tipografías, etc.</label><br/>
-            <sl-input type="text" id="manualMarca"/><br/><br/>
+            <div class="campo-label-text drop-seleccionado">
+              <label><span>¿Hay páginas web, diseños o estilos que te gusten y sirvan de inspiración?</span><br>Esto nos ayuda a entender mejor tu gusto y estilo. ¡Podés compartir links, imágenes o descripciones!</label>
+              <sl-textarea id="referenciasDiseno"></sl-textarea>
+              <label><span>¿Contás con un manual de marca o algún material gráfico que debamos respetar?</span><br>Ej: logo, paleta de colores, tipografías, etc.</label>
+              <sl-input type="text" id="manualMarca"/>
+            </div>
           </div>
         </div>
 
         <div id="seccion-rediseño-seo" style="display:none;">
-          <h3>Rastreo y Accesibilidad en Goolge</h3>
-          <label>¿Querés que tu sitio aparezca en Google y sea más fácil de encontrar por tus clientes?(Trabajamos con herramientas de rastreo y optimización para mejorar la visibilidad de tu web)      </label><br/>
-          <sl-textarea id="problemasTecnicos"></sl-textarea><br/><br/>
-          <label> ¿Tu sitio presenta errores técnicos o problemas de funcionamiento?(Ej: carga lenta, enlaces rotos, errores de visualización, etc.)</label><br/>
-          <sl-textarea id="problemasTecnicos"></sl-textarea><br/><br/>
-          <label>¿Contás con los accesos o materiales que podríamos necesitar?</label><br/>
-          <sl-input type="text" id="accesosMateriales"/><br/><br/>
+          <h5>
+            <sl-icon name="server" slot="prefix"></sl-icon>
+            Rastreo y Accesibilidad en Google
+          </h5>
+
+          <div class="campo-label-text">
+            <label><span>¿Querés que tu sitio aparezca en Google y sea más fácil de encontrar por tus clientes?</span><br>(Trabajamos con herramientas de rastreo y optimización para mejorar la visibilidad de tu web)</label>
+            <sl-textarea id="problemasTecnicos"></sl-textarea>
+          </div>
+
+          <div class="campo-label-text">
+            <label><span>¿Tu sitio presenta errores técnicos o problemas de funcionamiento?</span><br>(Ej: carga lenta, enlaces rotos, errores de visualización, etc.)</label>
+            <sl-textarea id="problemasTecnicos"></sl-textarea>
+          </div>
+          
+          <div class="campo-label-text">
+            <label><span>¿Contás con los accesos o materiales que podríamos necesitar?</span><br></label>
+            <sl-input type="text" id="accesosMateriales"/>
+          </div>
         </div>
 
         <div id="seccion-funcionalidades" style="display:none;">
-          <label>¿Querés que te ayudemos a agregar un mail corporativo o a corregir un formulario en tu sitio web?
-            Por ejemplo: crear un correo tipo contacto@tumarca.com, agregar un nuevo formulario de contacto o corregir uno que no está funcionando correctamente.</label><br/>
-          <sl-textarea id="problemasTecnicos"></sl-textarea><br/><br/>
-          <label>¿Qué secciones o funciones nuevas te gustaría agregar a tu sitio actual?</label><br/>
-          <sl-textarea id="funcionalidades"></sl-textarea><br/><br/>
-        </div>
+          <div class="campo-label-text">
+            <h5>
+              <sl-icon name="hand-thumbs-up" slot="prefix"></sl-icon>
+              Mejoras
+            </h5>
+            <label><span>¿Querés que te ayudemos a agregar un mail corporativo o a corregir un formulario en tu sitio web?</span><br>
+              Por ejemplo: crear un correo tipo contacto@tumarca.com, agregar un nuevo formulario de contacto o corregir uno que no está funcionando correctamente.</label>
+              <sl-textarea id="problemasTecnicos"></sl-textarea>
+          </div>
 
-        <div id="seccion-funcionalidades" style="display:none;">
-          <label>¿Querés que te ayudemos a agregar un mail corporativo o a corregir un formulario en tu sitio web?
-            Por ejemplo: crear un correo tipo contacto@tumarca.com, agregar un nuevo formulario de contacto o corregir uno que no está funcionando correctamente.</label><br/>
-          <sl-textarea id="problemasTecnicos"></sl-textarea><br/><br/>
-          <label>¿Qué secciones o funciones nuevas te gustaría agregar a tu sitio actual?</label><br/>
-          <sl-textarea id="funcionalidades"></sl-textarea><br/><br/>
+          <div class="campo-label-text">
+            <label><span>¿Qué secciones o funciones nuevas te gustaría agregar a tu sitio actual?</span><br/></label>
+            <sl-textarea id="funcionalidades"></sl-textarea>
+          </div>
         </div>
 
         <div id="seccion-tienda" style="display:none;">
@@ -205,20 +229,34 @@
         </div>
 
         <div id="seccion-productos-dominio" style="display:none;">
-          <h5>Datos del sitio actual</h5>
-          <label> ¿Ya tenés una web publicada o un dominio comprado?</label><br/>
-          <sl-select id="tieneSitio">
-            <sl-option value="">Selecciona...</sl-option>
-            <sl-option value="si">Sí</sl-option>
-            <sl-option value="no">No</sl-option>
-          </sl-select><br/><br/>
-          <div id="sitio-link" style="display:none;">
-            <label>Link del sitio:</label><br/>
-            <sl-input type="url" id="linkSitio"/><br/><br/>
+          <h5>
+            <sl-icon name="graph-up-arrow" slot="prefix"></sl-icon>
+            Datos del sitio actual
+          </h5>
+
+          <div class="campo-label-text">
+            <label><span>¿Ya tenés una web publicada o un dominio comprado?</span></label>
+            <sl-select id="tieneSitio">
+              <sl-option value="">Selecciona...</sl-option>
+              <sl-option value="si">Sí</sl-option>
+              <sl-option value="no">No</sl-option>
+            </sl-select>
+
+            <div id="sitio-link" style="display:none;">
+              <div class="campo-label-text drop-seleccionado">
+                <label>Link del sitio:</label>
+                <sl-input type="url" id="linkSitio"/>
+              </div>
+            </div>
           </div>
-          <label>¿Tenés acceso al panel de tu hosting o plataforma web actual?
-            Por favor compartí el usuario y contraseña del servicio que uses (WordPress, cPanel, DonWeb, Joomla, etc.)</label><br/>
-          <sl-input type="text" id="accesoHosting"/><br/><br/>
+          
+
+          <div class="campo-label-text">
+            <label><span>¿Tenés acceso al panel de tu hosting o plataforma web actual?</span><br>
+              Por favor compartí el usuario y contraseña del servicio que uses (WordPress, cPanel, DonWeb, Joomla, etc.)
+            </label>
+            <sl-input type="text" id="accesoHosting"/><br/><br/>
+          </div>
         </div>
 
       </div>

@@ -378,6 +378,7 @@ sl-card::part(base):hover {
 .nexos a {
   display: flex;
   justify-content: center;
+  transition: all .1s ease-in-out;
 }
 
 .nexos img {
@@ -387,11 +388,21 @@ sl-card::part(base):hover {
 
 .nexos sl-tag::part(base) {
   background-color: transparent;
-  /* background-color: rgba(255, 255, 255, 0.35); */
   color: var(--blanco-gris);
   font-weight: 400;
 }
 
+.nexos > div {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+@media (hover:hover) {
+  .nexos a:hover {
+    transform: scale(1.05);
+  }
+}
 section#bienvenidx {
   display: flex;
   justify-content: center;
@@ -496,4 +507,11 @@ sl-input.acento::part(input) {
   margin: .5rem 0rem 1rem;
   text-transform: uppercase;
   color: var(--turquesa);
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+}
+
+.drop-seleccionado {
+  padding-left: 4rem;
 }

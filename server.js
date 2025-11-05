@@ -4,18 +4,14 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
-
 const app = express();
 const PORT = process.env.PORT || 3000;
-
 // Middleware: conecta o comunica una capa con la otra 
 app.use(cors());
 app.use(express.json());
 app.use(express.static('publico'));
-
 // Mi conexión a MongoDB Atlas
 const MONGO_URI = process.env.MONGO_URI;
-
 mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -24,7 +20,6 @@ mongoose.connect(MONGO_URI, {
 }).catch((err) => {
   console.error('❌ Error conectando a MongoDB:', err);
 });
-
 // Respuesta
 const RespuestaSchema = new mongoose.Schema({
 
@@ -71,7 +66,6 @@ const RespuestaSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-
   // Clasificación de leads (clientes potentes)
   clasificacionLead: {
     type: String,
@@ -83,7 +77,6 @@ const RespuestaSchema = new mongoose.Schema({
     }
   }
 });
-
 const Respuesta = mongoose.model('Respuesta', RespuestaSchema);
 
 app.post('/api/formulario', async (req, res) => {
@@ -94,7 +87,6 @@ app.post('/api/formulario', async (req, res) => {
     linkProductos, correoVentas, mediosPago, sistemaFacturacion, infoComprador,
     extrasTienda, ayudaExtra
   } = req.body;
-
   try {
     const nuevaRespuesta = new Respuesta({
       nombreEmpresa, correo, tipoServicio, objetivo, funcionalidades, tieneDiseno,
@@ -109,16 +101,13 @@ app.post('/api/formulario', async (req, res) => {
     res.status(500).send('❌ Error al guardar respuesta');
   }
 });
-
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'publico', 'index.html'));
 });
-
 // Ruta de salud para UptimeRobot
 app.get('/api/health', (req, res) => {
   res.status(200).send('OK');
 });
-
 app.listen(PORT, () => {
   console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
 });

@@ -1,0 +1,517 @@
+/* Estilos globales */
+:not(:defined) {
+  visibility: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+    font-family: 'Rubik', sans-serif !important;
+    background-color: #f7f7f7;
+    transition: visibility 0.3s ease-in-out;
+    margin: 0;
+}
+
+body::-webkit-input-placeholder {
+    font-family: 'Rubik', sans-serif;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -2px;
+}
+
+h3 {
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: -2px;
+}
+
+h4 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -1px;
+}
+
+h5 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -1px;
+  margin: .5rem 0rem;
+}
+
+p {
+  font-size: small;
+  color: var(--negro-texto);
+  line-height: 1.45;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  color: var(--negro-texto);
+}
+
+:root {
+  --blanco-gris: #F2F2F2;
+  --blanco-gris-oscuro: #e6e6e6;
+  --turquesa: #1172A8;
+  --turquesa-oscuro: #0e5b85;
+  --turquesa-oscuro-select: #093e5a;
+  --rojo: #C11718;
+  --negro: #2D2D2D;
+  --negro-texto: rgb(68, 68, 68);
+  --gris-sutil: #c5c5c5;
+  --degr-turquesa-oscuro: linear-gradient(90deg, #1584C2 0%, #0A3F5C 100%);
+  --degr-negro: linear-gradient(90deg, #2D2D2D 0%, #0A3F5C 100%);
+}
+
+
+
+/*/////////////     Estilos personalizados para Shoelace */
+
+.btn-generico::part(base) {
+  font-family: 'Rubik', sans-serif !important;
+  font-weight: 200;
+  color: var(--blanco-gris);
+  background: var(--turquesa);
+  transition: all .35s ease-in-out;
+}
+
+.btn-enviar::part(base) {
+  font-size: 1.2rem;
+}
+
+@media (hover:hover) {
+  .btn-generico::part(base):hover {
+    color: var(--blanco-gris);
+    background: var(--negro);
+    border: 1px solid var(--turquesa);
+  }
+}
+
+.card-opcion::part(base) {
+  background-color: var(--turquesa);
+  padding: 1rem;
+  position: relative;
+}
+
+.card-opcion p,
+.card-opcion h5 {
+  color: var(--blanco-gris);
+}
+
+@media (hover:hover) {
+  .card-opcion::part(base):hover {
+    background-color: var(--turquesa-oscuro);
+  }
+}
+
+.card-opcion.activo::part(base) {
+  background-color: var(--blanco-gris);
+  border: 2px solid var(--turquesa);
+}
+
+.card-opcion.activo p,
+.card-opcion.activo h5 {
+  color: var(--turquesa);
+}
+
+.card-opcion sl-icon.seleccionado {
+  font-size: 1.25rem;
+  color: var(--turquesa);
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  opacity: 0;
+  z-index: 9;
+  border-radius: 50%;
+  background-color: var(--blanco-gris);
+}
+.card-opcion.activo sl-icon.seleccionado {
+  opacity: 1;
+}
+
+
+
+/*/////////////     Estilos particulares */
+
+.container {
+  width: clamp(200px, 80vw, 90vw);
+  max-width: 90%;
+  gap: 2rem;
+  margin: auto;
+  
+  animation: fadeIn;
+  animation-duration: 1.5s;
+}
+
+.container h4 {
+  margin: 1rem 0rem .5rem;
+}
+.container p {
+  margin: .2rem 0rem;
+}
+
+
+
+
+
+
+/*/////////////     Formulario */
+
+form {
+  padding: 1rem;
+  width: 100%;
+}
+
+sl-input::part(base) {
+  border: none;
+  border-radius: 0px;
+}
+
+.pasos {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.pasos p {
+  font-weight: 400;
+  font-size: .85rem;
+  text-transform: uppercase;
+}
+
+.pasos p span {
+  color: #C11718;
+  font-weight: 400;
+  font-size: large;
+}
+
+.pasos:first-of-type {
+  margin-top: 2rem;
+}
+
+
+div.botones-iniciales {
+  position: sticky;
+  justify-content: space-between;
+  top: 1rem;
+  display: flex;
+  margin: 5px auto;
+  padding: 20px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--gris-sutil);
+  backdrop-filter: blur(15px);
+  z-index: 99;
+}
+
+.campo-label-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.campo-label-text label,
+.campo-label-text span {
+  color: var(--negro-texto);
+}
+
+
+.campo-label-text span {
+  font-weight: 400;
+  font-size: 1.4rem;
+  letter-spacing: -1px;
+}
+
+/*/////////////     Tarjetas */
+
+sl-card::part(base) {
+  cursor: pointer;
+  width: clamp(100px, 17vw, 45vw);
+  height: clamp(100px, 17vw, 45vw);
+  transition: transform 0.1s ease;
+}
+
+sl-card::part(base):hover {
+  transform: scale(1.05);
+}
+
+.card {
+  min-width: 400px;
+  height: max-content;
+}
+
+.card-grid {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.field-form {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+}
+
+.apertura-form {
+  margin: 3.5rem 0rem 2rem;
+}
+
+.indicar-sugerencia {
+  margin: 1rem 0rem 1.5rem;
+  padding: .5rem 0rem 3rem;
+  align-items: center;
+  justify-content: end;
+  display: flex;
+  gap: .5rem;
+  border-bottom: 1px solid var(--negro-texto);
+}
+
+.indicar-sugerencia p {
+  font-size: smaller;
+}
+
+.elementos-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.45rem;
+}
+
+
+
+
+
+
+/*/////////////     Mensaje de Bienvenida */
+
+.saludo {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 2rem;
+}
+.saludo img {
+  height: 10vh;
+  width: auto;
+}
+
+.mensaje-inicio {
+  animation: fadeIn;
+  animation-duration: 1s;
+}
+
+.mensaje-inicio h2 {
+  margin: 1rem .3rem .3rem;
+  color: var(--blanco-gris);
+}
+
+.mensaje-inicio p {
+  margin: .45rem;
+}
+
+.texto {
+  display: flex;
+  flex-direction: column;
+}
+
+.texto div {
+  flex: 1;
+}
+
+.texto div > div:last-child {
+  width: fit-content;
+  display: flex;
+  margin: 1rem 0rem;
+}
+
+.texto p,
+.texto h2 {
+  color: var(--blanco-gris);
+}
+
+.texto span {
+  font-weight: 500;
+  text-align: center;
+}
+
+.texto div div sl-icon {
+  padding-right: .5rem;
+  font-size: large;
+  color: var(--blanco-gris);
+}
+
+.texto div div {
+  display: flex;
+  align-items: center;
+  padding: .3rem 1rem;
+  border-radius: 5px;
+  border: 1px solid rgb(197, 197, 197, 0.8);
+}
+
+.texto p:nth-child(1) > span {
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+}
+
+.nexos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+}
+
+.nexos a,
+.nexos p {
+  color: var(--blanco-gris);
+  text-decoration: none;
+}
+
+.nexos a {
+  display: flex;
+  justify-content: center;
+  transition: all .1s ease-in-out;
+}
+
+.nexos img {
+  height: 3.5vh;
+  width: auto;
+}
+
+.nexos sl-tag::part(base) {
+  background-color: transparent;
+  color: var(--blanco-gris);
+  font-weight: 400;
+}
+
+.nexos > div {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+@media (hover:hover) {
+  .nexos a:hover {
+    transform: scale(1.05);
+  }
+}
+section#bienvenidx {
+  display: flex;
+  justify-content: center;
+  padding: 6rem;
+  background: url('assets/img/fondo-form-dinamico.png') no-repeat fixed;
+  background-size: cover;
+}
+
+section#bienvenidx > div {
+  width: 60%;
+  padding: clamp(.5rem, 3rem, 6rem);
+  border-radius: 10px;
+  background-color: rgb(204, 204, 204, 0.35);
+
+  animation: fadeIn;
+  animation-duration: 1s;
+}
+
+.bienvenida-accion {
+  margin-top: 2rem;
+  text-align: end;
+}
+
+#botones-operaciones {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 1rem;
+  margin: 1rem 0rem 4rem;
+  padding: 1rem 2rem;
+}
+
+#resumen {
+  display: none;
+  background-color: var(--negro-texto);
+  margin: 2rem 0rem;
+  padding: 2rem;
+  border-radius: 10px;
+  border: 1px solid var(--negro);
+
+  animation: fadeIn;
+  animation-duration: 1s;
+}
+
+#resumen h5,
+#resumen td {
+  color: var(--blanco-gris);
+  font-weight: 300;
+}
+
+#resumen h5 {
+  padding-bottom: 2rem;
+}
+
+#resumen td:first-of-type {
+  font-weight: 500;
+}
+
+#resumen td {
+  padding: 5px 0px;
+}
+
+sl-input.acento::part(input) {
+  background-color: rgba(17, 114, 168, 0.35);
+}
+
+
+
+
+
+/* /////////////     Sectores de formulario */
+
+#seccion-desarrollo-rediseño,
+#seccion-rediseño-seo,
+#seccion-funcionalidades,
+#seccion-tienda,
+#seccion-productos-dominio {
+  padding: 2rem;
+  margin-top: 1rem;
+  border-radius: 10px;
+  background-color: var(--blanco-gris-oscuro);
+
+  animation: fadeIn;
+  animation-duration: 1s;
+}
+
+#seccion-desarrollo-rediseño h3,
+#seccion-rediseño-seo h3,
+#seccion-funcionalidades h3,
+#seccion-tienda h3,
+#seccion-productos-dominio h3 {
+  margin: .5rem 0rem 1rem;
+}
+
+#seccion-desarrollo-rediseño h5,
+#seccion-rediseño-seo h5,
+#seccion-funcionalidades h5,
+#seccion-tienda h5,
+#seccion-productos-dominio h5 {
+  font-weight: 300;
+  letter-spacing: -1px;
+  margin: .5rem 0rem 1rem;
+  text-transform: uppercase;
+  color: var(--turquesa);
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+}
+
+.drop-seleccionado {
+  padding-left: 4rem;
+}

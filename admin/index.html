@@ -12,7 +12,7 @@
       text-align: center;
     }
     #login-form, #panel {
-      max-width: 400px;
+      max-width: 500px;
       margin: auto;
       padding: 20px;
       background: white;
@@ -36,6 +36,14 @@
     tr:nth-child(even) {
       background-color: #f2f2f2;
     }
+    .actions {
+      margin: 20px 0;
+    }
+    button {
+      padding: 8px 12px;
+      margin: 0 5px;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
@@ -48,6 +56,33 @@
 
   <div id="panel" style="display:none;">
     <h1>📊 Panel de Leads Recibidos</h1>
+    
+    <!-- Filtros -->
+    <div class="filters">
+      <label>Filtrar por tipo:</label>
+      <select id="filtroTipo" onchange="cargarLeads()">
+        <option value="">Todos</option>
+        <option value="desarrollo">Desarrollo</option>
+        <option value="rediseño">Rediseño</option>
+        <option value="seo">SEO</option>
+        <option value="funcionalidades">Funcionalidades</option>
+      </select>
+
+      <label>Filtrar por clasificación:</label>
+      <select id="filtroClasificacion" onchange="cargarLeads()">
+        <option value="">Todos</option>
+        <option value="caliente">Caliente</option>
+        <option value="tibio">Tibio</option>
+        <option value="frío">Frío</option>
+      </select>
+    </div>
+
+    <!-- Acciones -->
+    <div class="actions">
+      <button onclick="cargarLeads()">🔄 Actualizar ahora</button>
+      <button onclick="exportarCSV()">💾 Exportar a CSV</button>
+    </div>
+
     <p><strong>Total de leads:</strong> <span id="total">0</span></p>
 
     <table id="tabla-leads">
@@ -57,11 +92,13 @@
           <th>Nombre</th>
           <th>Tipo</th>
           <th>Correo</th>
+          <th>Clasificación</th>
         </tr>
       </thead>
       <tbody></tbody>
     </table>
   </div>
+
   <script src="admin.js"></script>
 </body>
 </html>

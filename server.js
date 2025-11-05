@@ -104,10 +104,25 @@ app.post('/api/formulario', async (req, res) => {
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'publico', 'index.html'));
 });
-// Ruta de salud para UptimeRobot
+// Ruta de salud para el robotito
 app.get('/api/health', (req, res) => {
   res.status(200).send('OK');
 });
 app.listen(PORT, () => {
   console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+});
+// Ruta para verificar contraseña del panel admin
+app.post('/api/admin/login', (req, res) => {
+  const { password } = req.body;
+  const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD; 
+  if (!ADMIN_PASSWORD) {
+    return res.status(500).send('❌ Configuración incorrecta');
+  }
+
+  if (password === ADMIN_PASSWORD) {
+    
+    res.json({ success: true, token: 'admin_session_token_123' });
+  } else {
+    res.status(401).json({ success: false, message: 'Contraseña incorrecta' });
+  }
 });

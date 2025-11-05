@@ -1,24 +1,35 @@
-// Contraseña fija (cámbiala por algo seguro)
-const ADMIN_PASSWORD = 'contenidx2025';
-
-function checkPassword() {
+async function checkPassword() {
   const pass = document.getElementById("password").value;
 
-  if (pass === ADMIN_PASSWORD) {
-    document.getElementById("login-form").style.display = "none";
-    document.getElementById("panel").style.display = "block";
-    cargarLeads();
+  try {
+    const res = await fetch("https://backend-formulario.onrender.com/api/admin/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password: pass })
+    });
 
-    // Refrescar cada 5 minutos
-    setInterval(cargarLeads, 5 * 60 * 1000); // 5 minutos
-  } else {
-    alert("❌ Contraseña incorrecta");
+    const data = await res.json();
+
+    if (data.success) {
+      sessionStorage.setItem('adminToken', data.token);
+      document.getElementById("login-form").style.display = "none";
+      document.getElementById("panel").style.display = "block";
+      cargarLeads();
+    } else {
+      alert("❌ Contraseña incorrecta");
+    }
+  } catch (error) {
+    console.error("❌ Error al conectar:", error);
+    alert("Hubo un error al verificar la contraseña.");
   }
+  const botCheck = document.getElementById("bot-check").value;
+if (botCheck !== "3") {
+  alert("❌ Respuesta incorrecta. ¿Eres un robot?");
+  return;
 }
-
+}
 async function cargarLeads() {
   try {
-    // ✅ URL corregida (sin espacios)
     const res = await fetch("https://backend-formulario.onrender.com/api/leads");
 
     if (!res.ok) {

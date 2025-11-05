@@ -1,10 +1,17 @@
 async function checkPassword() {
   const pass = document.getElementById("password").value;
+  const botCheck = document.getElementById("bot-check").value;
+  if (botCheck !== "3") {
+    alert("❌ Respuesta incorrecta. ¿Eres un robot?");
+    return;
+  }
 
   try {
     const res = await fetch("https://backend-formulario.onrender.com/api/admin/login", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { 
+        "Content-Type": "application/json" 
+      },
       body: JSON.stringify({ password: pass })
     });
 
@@ -22,15 +29,15 @@ async function checkPassword() {
     console.error("❌ Error al conectar:", error);
     alert("Hubo un error al verificar la contraseña.");
   }
-  const botCheck = document.getElementById("bot-check").value;
-if (botCheck !== "3") {
-  alert("❌ Respuesta incorrecta. ¿Eres un robot?");
-  return;
 }
-}
+
 async function cargarLeads() {
   try {
-    const res = await fetch("https://backend-formulario.onrender.com/api/leads");
+    const res = await fetch("https://backend-formulario.onrender.com/api/leads", {
+      headers: {
+        'x-admin-token': sessionStorage.getItem('adminToken')
+      }
+    });
 
     if (!res.ok) {
       throw new Error(`Error HTTP: ${res.status}`);
@@ -53,7 +60,7 @@ async function cargarLeads() {
     const tbody = document.querySelector("#tabla-leads tbody");
     const total = document.getElementById("total");
 
-    tbody.innerHTML = ""; // Limpiar tabla
+    tbody.innerHTML = ""; 
 
     if (!leads.length) {
       tbody.innerHTML = "<tr><td colspan='5'>No hay leads que coincidan.</td></tr>";
@@ -87,14 +94,12 @@ function exportarCSV() {
     ["Fecha", "Nombre", "Tipo de Servicio", "Correo", "Clasificación"]
   ];
 
-  // Obtener datos filtrados
   const tbody = document.querySelector("#tabla-leads tbody");
   Array.from(tbody.querySelectorAll("tr")).forEach(tr => {
     const cells = Array.from(tr.querySelectorAll("td")).map(td => td.innerText);
     rows.push(cells);
   });
 
-  // Convertir a CSV
   const csvContent = "text/csv;charset=utf-8," + rows.map(e => e.join(",")).join("\n");
   const encodedUri = encodeURI(csvContent);
   const link = document.createElement("a");

@@ -39,12 +39,8 @@ document.querySelectorAll(".card-opcion").forEach(card => {
       scrollToOffset("#scroll-ventana", -60);
     }
 
-    // Actualización del estado de tipo de servicio seleccionado. Eso se suministra a mostrarResumen
-    // console.log("Tipo seleccionado:", tipo); // Para depuración
     document.getElementById("tipoServicio").value = tipo;
   });
-
-
 
   card.addEventListener('click', () => {
     document.querySelectorAll('.card-opcion').forEach(c => c.classList.remove('activo'));
@@ -63,17 +59,6 @@ const observer = new MutationObserver((mutationsList) => {
 document.querySelectorAll(".card-opcion").forEach(card => {
   observer.observe(card, { attributes: true });
 });
-
-
-
-
-
-
-
-
-
-
-
 
 document.getElementById("tieneDiseno").addEventListener("sl-change", function () {
   const disenoNo = document.getElementById("diseno-no");
@@ -301,23 +286,20 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-
 async function enviarDatos() {
   const nombreEmpresa = document.getElementById("nombreEmpresa").value.trim();
-  // Aunque se repite el selector dejarlo así hasta optimizar
   const inputEmpresa = document.getElementById("nombreEmpresa");
   const correo = document.getElementById("correo").value.trim();
   const tipoServicio = document.getElementById("tipoServicio").value.trim();
 
   if (!nombreEmpresa) {
     mostrarAlerta("⚠️ Por favor, ingresa el nombre del proyecto o empresa.");
-    // Se agraga clase de identificación de campo
     inputEmpresa.classList.add('acento');
     setTimeout(() => {
       window.scrollTo(0, 0);  
     }, 900 );
     
-    // Se elimina la clase .acento al hacer focus o escribir en el campo
+
     const inputInterno = inputEmpresa.shadowRoot.querySelector('input');
     const slInput = document.getElementById("nombreEmpresa");
     inputInterno.addEventListener('input', function () {
@@ -329,10 +311,6 @@ async function enviarDatos() {
     
     return false;
   }
-
-
-
-
 
   if (!correo) {
     mostrarAlerta("⚠️ El correo electrónico es obligatorio.");
@@ -391,13 +369,10 @@ async function enviarDatos() {
   } catch (error) {
     console.error("❌ Error de conexión:", error);
     mostrarAlerta("❌ No se pudo conectar con el servidor.");
-    // alert("❌ No se pudo conectar con el servidor.");
+   
     return false;
   }
 }
-
-
-
 async function mostrarAlerta(mensaje, tipo = 'warning') {
   const alert = document.createElement('sl-alert');
   alert.variant = tipo;

@@ -11,7 +11,8 @@ const PORT = process.env.PORT || 3000;
 const corsOptions = {
   origin: [
     'https://formulario-contenidx.onrender.com',
-    'https://admin-contenidx.onrender.com'
+    'https://admin-contenidx.onrender.com',
+    'https://formulario-dinamico-front.onrender.com'
   ],
   credentials: true,
   optionsSuccessStatus: 200

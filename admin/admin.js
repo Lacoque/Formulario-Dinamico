@@ -7,7 +7,7 @@ async function checkPassword() {
   }
 
   try {
-    const res = await fetch("https://backend-formulario.onrender.com/api/admin/login", {
+    const res = await fetch("https://formulario-dinamico.onrender.com/api/admin/login", {
       method: "POST",
       headers: { 
         "Content-Type": "application/json" 
@@ -33,7 +33,7 @@ async function checkPassword() {
 
 async function cargarLeads() {
   try {
-    const res = await fetch("https://backend-formulario.onrender.com/api/leads", {
+    const res = await fetch("https://formulario-dinamico.onrender.com/api/leads", {
       headers: {
         'x-admin-token': sessionStorage.getItem('adminToken')
       }

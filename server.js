@@ -7,13 +7,16 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
+// configuraciones de CORS
 const corsOptions = {
   origin: [
     'https://formulario-contenidx.onrender.com',
     'https://admin-contenidx.onrender.com',
-    'https://formulario-dinamico-front.onrender.com'
+    'https://formulario-dinamico-front.onrender.com',
+    'https://panel.contenidx.com.ar'
   ],
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'x-admin-token'],
   credentials: true,
   optionsSuccessStatus: 200
 };

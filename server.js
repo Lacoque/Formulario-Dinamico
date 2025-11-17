@@ -129,7 +129,9 @@ app.post('/api/admin/login', (req, res) => {
 });
 
 // Ruta para obtener leads 
-app.get('/api/leads', requireAdminAuth, async (req, res) => {
+// app.get('/api/leads', requireAdminAuth, async (req, res) => {
+app.get('/api/leads', async (req, res) => {
+
   try {
     const leads = await Respuesta.find({}).sort({ fecha: -1 }); 
     res.json(leads);

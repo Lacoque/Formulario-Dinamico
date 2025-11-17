@@ -409,9 +409,11 @@ section#bienvenidx {
   padding: 6rem;
   background: url('assets/img/fondo-form-dinamico.png') no-repeat fixed;
   background-size: cover;
+  height: 100vh;
 }
 
 section#bienvenidx > div {
+  height: min-content;
   width: 60%;
   padding: clamp(.5rem, 3rem, 6rem);
   border-radius: 10px;

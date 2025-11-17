@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Panel Admin - Contenidx</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+    #login-form, #panel {
+      max-width: 500px;
+      margin: auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    .actions {
+      margin: 20px 0;
+    }
+    button {
+      padding: 8px 12px;
+      margin: 0 5px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="login-form">
+    <h2>🔐 Acceso al Panel de CX</h2>
+    <input type="password" id="password" placeholder="Contraseña"><br/><br/>
+    <label>¿Cuánto es 2 + 1? <input type="number" id="bot-check" placeholder="Respuesta"></label><br/><br/>
+    <button onclick="checkPassword()">Ingresar</button>
+  </div>
+  <div id="panel" style="display:none;">
+    <h1>Panel de Leads Recibidos</h1>
+    
+    <!-- Filtros -->
+    <div class="filters">
+      <label>Filtrar por tipo:</label>
+      <select id="filtroTipo" onchange="cargarLeads()">
+        <option value="">Todos</option>
+        <option value="desarrollo">Desarrollo</option>
+        <option value="rediseño">Rediseño</option>
+        <option value="seo">SEO</option>
+        <option value="funcionalidades">Funcionalidades</option>
+      </select>
+
+      <label>Filtrar por clasificación:</label>
+      <select id="filtroClasificacion" onchange="cargarLeads()">
+        <option value="">Todos</option>
+        <option value="caliente">Caliente</option>
+        <option value="tibio">Tibio</option>
+        <option value="frío">Frío</option>
+      </select>
+    </div>
+
+    <!-- Acciones -->
+    <div class="actions">
+      <button onclick="cargarLeads()"> Actualizar ahora</button>
+      <button onclick="exportarCSV()"> Exportar a CSV</button>
+    </div>
+
+    <p><strong>Total de leads:</strong> <span id="total">0</span></p>
+
+    <table id="tabla-leads">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Nombre</th>
+          <th>Tipo</th>
+          <th>Correo</th>
+          <th>Clasificación</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

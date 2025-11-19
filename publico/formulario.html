@@ -272,7 +272,7 @@
       <div>
         <sl-button-group label="Operaciones">
           <sl-tooltip content="¡Mira tu resumen!" style="--sl-tooltip-arrow-size: 0;">
-            <sl-button class="btn-enviar" type="button" size="large" onclick="mostrarResumen()">
+            <sl-button class="btn-enviar" type="button" size="large" @click="${() => document.getElementById('modalResumen').show()}">
               <sl-icon slot="prefix" name="eye"></sl-icon>
             </sl-button>
           </sl-tooltip>
@@ -289,8 +289,21 @@
         Enviar
       </sl-button>
     </div>
-    <div id="resumen"></div>
-  </div>
+    <!-- Contenedor del Modal -->
+<div id="modalResumen" role="dialog" aria-labelledby="modal-title" class="sl-modal" tabindex="-1" style="display: none;">
+  <div class="sl-modal__overlay" @click="${() => document.getElementById('modalResumen').hide()}"></div>
+  <section class="sl-modal__panel" style="max-width: 600px; width: 90%; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.3);">
+    <header id="modal-header" class="sl-modal__header" style="border-bottom: 2px solid #eee; padding: 15px 20px;">
+      <h3 id="modal-title" style="margin: 0; color: #007bff;">📄 Información que estás por enviar</h3>
+      <sl-icon-button name="x-lg" label="Cerrar modal" style="font-size: 1.5em;" @click="${() => document.getElementById('modalResumen').hide()}"></sl-icon-button>
+    </header>
+    <div id="contenidoResumen" class="sl-modal__body" style="padding: 20px; max-height: 60vh; overflow-y: auto;"></div>
+    <footer class="sl-modal__footer" style="border-top: 1px solid #eee; padding: 15px 20px; display: flex; justify-content: flex-end; gap: 10px;">
+      <sl-button variant="neutral" @click="${() => document.getElementById('modalResumen').hide()}">Editar</sl-button>
+      <sl-button variant="primary" @click="descargarPDF()">Descargar PDF</sl-button>
+    </footer>
+  </section>
+</div>
 
   <script type="module">
     const form = document.querySelector('.input-validation-required');

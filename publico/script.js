@@ -84,7 +84,7 @@ function isValidEmail(email) {
 }
 // Obtener valores actuales del formulario para el resumen
 function mostrarResumen() {
-  const contenedor = document.getElementById("resumen");
+  const contenidoResumen = document.getElementById("contenidoResumen");
   const nombreEmpresa = document.getElementById("nombreEmpresa").value.trim();
   const correo = document.getElementById("correo").value.trim();
   const tipoServicio = document.getElementById("tipoServicio").value.trim();
@@ -134,29 +134,30 @@ function mostrarResumen() {
     if (sistemaFacturacion) campos.push({ label: "Sistema de Facturación", value: sistemaFacturacion });
   }
   if (campos.length === 0) {
-    contenedor.innerHTML = "<p>⚠️ No se han completado campos aún.</p>";
-    contenedor.style.display = "block";
+    contenidoResumen.innerHTML = '<p style="color: #666; text-align: center;">⚠️ No se han completado campos aún.</p>';
     return;
   }
 
   const filas = campos.map(campo => `
-    <tr>
-      <td>${campo.label}</td>
-      <td>${campo.value}</td>
-    </tr>
+  <tr>
+  <td style="font-weight:bold; padding:8px 10px; vertical-align: top;"><strong>${campo.label}</strong></td>
+  <td style="padding:8px 10px; vertical-align: top;">${campo.value}</td>
+</tr>
   `).join("");
 
-  const contenido = `
-    <h5>Información que estas por enviar al equipo de Contenidx</h5>
-    <table style="width:100%; border-collapse: collapse;">
-      ${filas}
-    </table>
+  contenidoResumen.innerHTML = `
+  <table style="width:100%; border-collapse: collapse;">
+    ${filas}
+  </table>
   `;
-
-  contenedor.innerHTML = contenido;
-  contenedor.style.display = "block";
 }
+document.getElementById('modalResumen').show = function() {
+  this.style.display = 'block';
+};
 
+document.getElementById('modalResumen').hide = function() {
+  this.style.display = 'none';
+};
 
 async function descargarPDF() {
   const { jsPDF } = window.jspdf; 
@@ -368,7 +369,7 @@ async function enviarDatos() {
     }
   } catch (error) {
     console.error("❌ Error de conexión:", error);
-    mostrarAlerta("❌ No se pudo conectar con el servidor.");
+    mostrarAlerta("❌ Tenemos algunas fallas, escribinos al WPP!.");
    
     return false;
   }

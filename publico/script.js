@@ -397,3 +397,7 @@ async function mostrarAlertaExito(mensaje, tipo = 'success') {
   alert.show();
   alert.toast();
 }
+
+window.mostrarResumen = mostrarResumen;
+window.descargarPDF = descargarPDF;
+window.enviarDatos = enviarDatos;

@@ -82,9 +82,11 @@ function isValidEmail(email) {
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return re.test(String(email).toLowerCase());
 }
-// Obtener valores actuales del formulario para el resumen
+// Solo genera el contenido del resumen
 function mostrarResumen() {
   const contenidoResumen = document.getElementById("contenidoResumen");
+
+  // Obtener valores actuales del formulario (tu lógica existente)
   const nombreEmpresa = document.getElementById("nombreEmpresa").value.trim();
   const correo = document.getElementById("correo").value.trim();
   const tipoServicio = document.getElementById("tipoServicio").value.trim();
@@ -105,6 +107,7 @@ function mostrarResumen() {
   const sistemaFacturacion = document.getElementById("sistemaFacturacion")?.value.trim() || "";
 
   let campos = [];
+
 
   if (nombreEmpresa) campos.push({ label: "Nombre del Proyecto", value: nombreEmpresa });
   if (correo) campos.push({ label: "Correo Electrónico", value: correo });
@@ -151,14 +154,32 @@ function mostrarResumen() {
   </table>
   `;
 }
-document.getElementById('modalResumen').show = function() {
-  this.style.display = 'block';
-};
+// Inicializa el modal después de que el DOM esté listo
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById('modalResumen');
 
-document.getElementById('modalResumen').hide = function() {
-  this.style.display = 'none';
-};
+  
+  window.mostrarResumen = function () {
+    if (modal) {
+    
+      mostrarResumen(); 
+      modal.style.display = 'block';
+    }
+  };
 
+  window.cerrarModal = function () {
+    if (modal) {
+      modal.style.display = 'none';
+    }
+  };
+
+  // Cierra al hacer clic fuera del contenido
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      cerrarModal();
+    }
+  });
+});
 async function descargarPDF() {
   const { jsPDF } = window.jspdf; 
   const doc = new jsPDF();
@@ -398,6 +419,5 @@ async function mostrarAlertaExito(mensaje, tipo = 'success') {
   alert.toast();
 }
 
-window.mostrarResumen = mostrarResumen;
 window.descargarPDF = descargarPDF;
 window.enviarDatos = enviarDatos;

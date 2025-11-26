@@ -272,7 +272,7 @@
       <div>
         <sl-button-group label="Operaciones">
           <sl-tooltip content="¡Mira tu resumen!" style="--sl-tooltip-arrow-size: 0;">
-            <sl-button class="btn-enviar" type="button" size="large" @click="${() => document.getElementById('modalResumen').show()}">
+            <sl-button class="btn-enviar" type="button" size="large" onclick="mostrarResumen()">
               <sl-icon slot="prefix" name="eye"></sl-icon>
             </sl-button>
           </sl-tooltip>
